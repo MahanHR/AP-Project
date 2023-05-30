@@ -24,7 +24,6 @@ namespace PostProject
         {
             InitializeComponent();
         }
-
         public void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -42,8 +41,16 @@ namespace PostProject
 
         public void SignUp_Click(object sender, RoutedEventArgs e)
         {
-            CC.Content = new UserControl1();
-            stack1.Children.Clear();
+            var p = new Window1();
+            p.Show();
+            this.Close();
+        }
+    }
+    public partial class MainCode
+    {
+        public static void Main()
+        {
+
         }
     }
 }
