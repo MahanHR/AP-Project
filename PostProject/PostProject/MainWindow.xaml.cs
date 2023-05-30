@@ -46,11 +46,4 @@ namespace PostProject
             this.Close();
         }
     }
-    public partial class MainCode
-    {
-        public static void Main()
-        {
-
-        }
-    }
 }
