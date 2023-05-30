@@ -42,8 +42,8 @@ namespace PostProject
 
         public void SignUp_Click(object sender, RoutedEventArgs e)
         {
-            CC.Content = new Page1();
-            
+            CC.Content = new UserControl1();
+            stack1.Children.Clear();
         }
     }
 }
