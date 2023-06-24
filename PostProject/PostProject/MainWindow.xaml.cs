@@ -24,15 +24,33 @@ namespace PostProject
         {
             InitializeComponent();
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        public void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void TextBox_PreviewGiveFeedback(object sender, GiveFeedbackEventArgs e)
+        public void TextBox_PreviewGiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
 
+        }
+
+        public void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        public void SignUp_Click(object sender, RoutedEventArgs e)
+        {
+            var p = new Window1();
+            p.Show();
+            this.Close();
+        }
+
+        private void alaki_Click(object sender, RoutedEventArgs e)
+        {
+            var p = new Customer();
+            p.Show();
+            this.Close();
         }
     }
 }
