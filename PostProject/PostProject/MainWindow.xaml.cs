@@ -52,5 +52,12 @@ namespace PostProject
             p.Show();
             this.Close();
         }
+
+        private void alaki2_Click(object sender, RoutedEventArgs e)
+        {
+            var p = new Employee();
+            p.Show();
+            this.Close();
+        }
     }
 }

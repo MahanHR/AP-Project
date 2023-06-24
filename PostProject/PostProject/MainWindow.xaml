@@ -26,8 +26,11 @@
             <Button Name ="SignUp" Margin="10" Width="170" Click="SignUp_Click" Foreground="WhiteSmoke" Background="#004f92">
                 <Bold>SignUp Employee</Bold>
             </Button>
-            <Button Name ="alaki" Margin="10" Width="170" Click="alaki_Click" Foreground="WhiteSmoke" Background="#004f92">
+            <Button Name ="alaki" Margin="0,0,0,0" Width="170" Click="alaki_Click" Foreground="WhiteSmoke" Background="#004f92">
                 <Bold>Alaki</Bold>
+            </Button>
+            <Button Name ="alaki2" Margin="0" Width="170" Click="alaki2_Click" Foreground="WhiteSmoke" Background="#004f92">
+                <Bold>Alaki2</Bold>
             </Button>
         </StackPanel>
         <Border BorderBrush="Black" BorderThickness="1"/>
