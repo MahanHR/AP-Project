@@ -8,12 +8,12 @@
         Title="Customer" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:/Users\HP/source/repos/HajAmir Post/HajAmir Post/back.png"/>
+            <ImageBrush ImageSource="C:\Users\HP\source\repos\HajAmir-Post\AP-Project\PostProject\PostProject\Sources\back.png"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="left" Height="450" Name="stack1">
             <StackPanel HorizontalAlignment="Center" Height="50">
                 <Button Name="OrderReport" Click="OrderReport_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
-                    <Bold>Order Report</Bold>
+                    <Bold>Orders' Report</Bold>
                 </Button>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Height="50">
