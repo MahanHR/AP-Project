@@ -32,10 +32,11 @@ namespace PostProject
         {
 
         }
-        public void PasswordBox_Confirm(object sender, RoutedEventArgs e)
+        public void TextBox_Confirm(object sender, TextChangedEventArgs e)
         {
 
         }
+
         public void TextBox_Email(object sender, TextChangedEventArgs e)
         {
 
@@ -49,7 +50,7 @@ namespace PostProject
         {
 
         }
-        public void PasswordBox_Pass(object sender, RoutedEventArgs e)
+        public void TextBox_Pass(object sender, TextChangedEventArgs e)
         {
 
         }
