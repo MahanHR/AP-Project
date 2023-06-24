@@ -39,15 +39,15 @@ namespace PostProject
         }
         public void CustomerWallet_Click(object sender, RoutedEventArgs e)
         {
-
+            ButtonShow.Content = new CustomerWallet();
         }
         public void PackageInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            ButtonShow.Content = new PackageInfo();
         }
         public void OrderReport_Click(object sender, RoutedEventArgs e)
         {
-
+            ButtonShow.Content = new OrdersReport();
         }
     }
 }

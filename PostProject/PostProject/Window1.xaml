@@ -8,7 +8,7 @@
         Title="MM Post" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:/Users\HP/source/repos/HajAmir Post/HajAmir Post/back.png"/>
+            <ImageBrush ImageSource="Sources/back.png"/>
         </Grid.Background>
         <ContentControl x:Name="CC1"></ContentControl>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="335" Name="stack2">
