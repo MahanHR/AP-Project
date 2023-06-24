@@ -25,7 +25,7 @@ namespace PostProject
         }
         public void HomeB_Click(object sender, RoutedEventArgs e)
         {
-            ButtonShow.Content = new Empty();
+
         }
         public void Exit_Click(object sender, RoutedEventArgs e)
         {
