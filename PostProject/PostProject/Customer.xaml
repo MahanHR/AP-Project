@@ -8,7 +8,7 @@
         Title="Customer" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\HP\source\repos\HajAmir-Post\AP-Project\PostProject\PostProject\Sources\back.png"/>
+            <ImageBrush ImageSource="Sources/back.png"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="left" Height="450" Name="stack1">
             <StackPanel HorizontalAlignment="Center" Height="50">
@@ -39,7 +39,7 @@
             <StackPanel HorizontalAlignment="Center" Height="90">
                 <Button Name="HomeB" Click="HomeB_Click" Margin="10,25" Background="#00609c" Foreground="WhiteSmoke" Width="70">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="62" Name="stack2">
-                        <Image Source="C:\Users\HP\source\repos\HajAmir Post\HajAmir Post\Home.png"/>
+                        <Image Source="Sources/Home.png"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

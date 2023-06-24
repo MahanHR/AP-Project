@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Margin="40" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="400" Name="stack1">
+        <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="400" Name="stack1">
             <TextBlock x:Name="Orders" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="WhiteSmoke" Width="500" Height="335"></TextBlock>
             <Button Name="ShowOrders" Click="ShowOrders_Click" Background="#00609c" Foreground="WhiteSmoke" Width="170">
                 <Bold>Show Orders</Bold>
