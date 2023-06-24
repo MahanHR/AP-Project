@@ -8,13 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Sources\back.png" />
-    <None Remove="Sources\Home.png" />
+    <None Remove="Resources\05.jpg" />
+    <None Remove="Resources\Background.jpg" />
+    <None Remove="Resources\Home.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Sources\back.png" />
-    <Resource Include="Sources\Home.png" />
+    <Resource Include="Resources\Background.jpg" />
+    <Resource Include="Resources\Home.png" />
   </ItemGroup>
 
 </Project>

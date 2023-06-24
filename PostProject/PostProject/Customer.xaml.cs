@@ -17,7 +17,7 @@ namespace PostProject
     /// <summary>
     /// Interaction logic for Customer.xaml
     /// </summary>
-    public partial class Customer : Window
+    public partial class Customer : Page
     {
         public Customer()
         {
@@ -25,13 +25,11 @@ namespace PostProject
         }
         public void HomeB_Click(object sender, RoutedEventArgs e)
         {
-            ButtonShow.Content = new Empty();
+
         }
         public void Exit_Click(object sender, RoutedEventArgs e)
         {
-            var p = new MainWindow();
-            p.Show();
-            this.Close();
+
         }
         public void EditUandP_Click(object sender, RoutedEventArgs e)
         {
