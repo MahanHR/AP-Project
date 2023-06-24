@@ -5,5 +5,5 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PostProject"
         mc:Ignorable="d"
-        Title="MM Post" Height="450" Width="800">
+        Title="MM Post" Height="600" Width="900">
 </Window>

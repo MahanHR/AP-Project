@@ -5,44 +5,44 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:local="clr-namespace:PostProject"
       mc:Ignorable="d"
-      Title="MM Post" Height="450" Width="800">
-    <Grid>
+      Title="MM Post" Height="600" Width="900">
+    <Grid x:Name="myGrid">
         <Grid.Background>
-            <ImageBrush/>
+            <ImageBrush ImageSource="/Resources/Background.jpg" Stretch="UniformToFill"></ImageBrush>
         </Grid.Background>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="335" Name="stack2">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="75"><Bold>Name</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="90" TextChanged="TextBox_Name"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Name</Bold></TextBlock>
+                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_Name"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="75"><Bold>LastName</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="90" TextChanged="TextBox_LName"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>LastName</Bold></TextBlock>
+                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_LName"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="75"><Bold>Personnel ID</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="90" TextChanged="TextBox_PersonnelID"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Personnel ID</Bold></TextBlock>
+                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_PersonnelID"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="75"><Bold>UserName</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="90" TextChanged="TextBox_UName"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>UserName</Bold></TextBlock>
+                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_UName"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="75"><Bold>Password</Bold></TextBlock>
-                <PasswordBox Margin="0,10" Width="90" PasswordChanged="PasswordBox_Pass"></PasswordBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Password</Bold></TextBlock>
+                <PasswordBox Margin="0,10" Width="120" PasswordChanged="PasswordBox_Pass"></PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="75"><Bold>Confirm Pass</Bold></TextBlock>
-                <PasswordBox Margin="0,10" Width="90" PasswordChanged="PasswordBox_Confirm"></PasswordBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Confirm Password</Bold></TextBlock>
+                <PasswordBox Margin="0,10" Width="120" PasswordChanged="PasswordBox_Confirm"></PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="75"><Bold>Email</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="90" TextChanged="TextBox_Email"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Email</Bold></TextBlock>
+                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_Email"></TextBox>
             </StackPanel>
-            <Button Name ="SignUp"  Margin="5" Width="170" Foreground="WhiteSmoke" Background="#004f92">
+            <Button Name ="SignUp"  Margin="5" Width="240" Foreground="WhiteSmoke" Background="#004f92">
                 <Bold>SignUp</Bold>
             </Button>
-            <Button x:Name ="Login" Margin="15" Background="#00609c" Width="170" Click="Login_Click" Foreground="WhiteSmoke">
+            <Button Name ="Login" Margin="15"  Width="240" Foreground="WhiteSmoke" Background="#00609c" Click="Login_Click">
                 <Bold>Login</Bold>
             </Button>
         </StackPanel>
