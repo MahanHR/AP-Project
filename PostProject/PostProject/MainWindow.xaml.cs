@@ -74,11 +74,20 @@ namespace PostProject
                 SqlDataAdapter adapter = new SqlDataAdapter(command, conn);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+                command = "select * from Employee";
+                adapter = new SqlDataAdapter(command, conn);
+                data = new DataTable();
+                adapter.Fill(data);
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    string commandup = "update Employee Set PersonnelID ='" + data.Rows[i][0].ToString() + "',FirstName = '" + data.Rows[i][1].ToString() + "',LastName = '" + data.Rows[i][2].ToString() + "',Email = '" + data.Rows[i][3].ToString() + "',UserName = '" + data.Rows[i][4].ToString() + "',PassWord = '" + data.Rows[i][5].ToString() + "',isEntered = '" + 0 + "' where PersonnelID = '" + i+1 + "'";
+                    SqlCommand cmd = new SqlCommand(commandup, conn);
+                }
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
                     if (data.Rows[i][4].ToString() == Uname.Text.ToString() && data.Rows[i][5].ToString() == Pass.Password.ToString())
-                    {                        
-                        string commandup = "update Employee Set isEntered = '" + 1 + "' where Employee.UserName = '" + Uname.Text.ToString() + "'";
+                    {
+                        string commandup = "update Employee Set PersonnelID ='" + data.Rows[i][0].ToString() + "',FirstName = '" + data.Rows[i][1].ToString() + "',LastName = '" + data.Rows[i][2].ToString() + "',Email = '" + data.Rows[i][3].ToString() + "',UserName = '" + data.Rows[i][4].ToString() + "',PassWord = '" + data.Rows[i][5].ToString() + "',isEntered = '" + 1 + "' where UserName = '" + Uname.Text.ToString() + "'";
                         SqlCommand cmd = new SqlCommand(commandup, conn);
                         cmd.BeginExecuteNonQuery();
                         conn.Close();
@@ -94,9 +103,14 @@ namespace PostProject
                 adapter.Fill(data);
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
+                    string commandup = "update Customer Set CustomerID = '" + data.Rows[i][0].ToString() + "',FirstName = '" + data.Rows[i][1].ToString() + "',LastName = '" + data.Rows[i][2].ToString() + "',Email = '" + data.Rows[i][3].ToString() + "',SSN = '" + data.Rows[i][4].ToString() + "',Phone = '" + data.Rows[i][5].ToString() + "',UserName = '" + data.Rows[i][6].ToString() + "',PassWord = '" + data.Rows[i][7].ToString() + "',isEntered = '" + 0 + "' where CustomerID = '" + i + 1 + "'";
+                    SqlCommand cmd = new SqlCommand(commandup, conn);
+                }
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
                     if (data.Rows[i][6].ToString() == Uname.Text.ToString() && data.Rows[i][7].ToString() == Pass.Password.ToString())
                     {
-                        string commandup = "update Customer Set CusomerID = '" + Convert.ToInt32(data.Rows[i][0]) + "',FirstName = '" + data.Rows[i][1] + "',LastName = '" + data.Rows[i][2] + "',Email = '" + data.Rows[i][3] + "',SSN Number = '" + data.Rows[i][4] + "',Phone Number = '" + data.Rows[i][5] + "',UserName = '" + data.Rows[i][6] + "',PassWord = '" + data.Rows[i][7] + "',isEntered = '" + 1 + "' where Customer.UserName = '" + Uname.Text + "'";
+                        string commandup = "update Customer Set CustomerID = '" + data.Rows[i][0].ToString() + "',FirstName = '" + data.Rows[i][1].ToString() + "',LastName = '" + data.Rows[i][2].ToString() + "',Email = '" + data.Rows[i][3].ToString() + "',SSN = '" + data.Rows[i][4].ToString() + "',Phone = '" + data.Rows[i][5].ToString() + "',UserName = '" + data.Rows[i][6].ToString() + "',PassWord = '" + data.Rows[i][7].ToString() + "',isEntered = '" + 1 + "' where UserName = '" + Uname.Text.ToString() + "'";
                         SqlCommand cmd = new SqlCommand(commandup, conn);
                         cmd.BeginExecuteNonQuery();
                         conn.Close();
