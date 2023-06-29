@@ -5,9 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PostProject"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
-        <StackPanel Margin="30" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="396" Name="stack1">
+        <Grid.Background>
+            <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <CheckBox x:Name="SSN" Content="SSN Number" FontWeight="Bold" Unchecked="SSN_Unchecked" Checked="CheckBox_Checked" Foreground="WhiteSmoke" Margin="5" Height="18" Width="168"/>
             </StackPanel>

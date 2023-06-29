@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:PostProject"
         mc:Ignorable="d"
         Title="MM Post" Height="600" Width="900">
-        </StackPanel>
-        <Border BorderBrush="Black" BorderThickness="1"/>
-    </Grid>
+    <Border BorderBrush="Black" BorderThickness="1"/>
 </Window>

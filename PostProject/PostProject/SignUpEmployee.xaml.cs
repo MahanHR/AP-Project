@@ -1,15 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Data.SqlClient;
-using System.IO;
-using Microsoft.Data.SqlClient;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace PostProject
 {
@@ -58,11 +50,11 @@ namespace PostProject
         {
             try
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\HajAmir-Post\AP-Project\PostProject\PostProject\SQL\save.mdf;Integrated Security=True");
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\HajAmir-Post\AP-Project\PostProject\PostProject\SQL\save.mdf;Integrated Security=True");
                 conn.Open();
                 string command = "select * from Employee";
-                SqlDataAdapter adapter = new SqlDataAdapter(command, conn);
-                DataTable data = new DataTable();
+                SqlDataAdapter adapter = new(command, conn);
+                DataTable data = new();
                 adapter.Fill(data);
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
@@ -79,7 +71,7 @@ namespace PostProject
             }
             catch (Exception ex)
             {
-                Error.Text = ex.Message;    
+                Error.Text = ex.Message;
             }
         }
     }

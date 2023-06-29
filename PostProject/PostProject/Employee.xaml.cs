@@ -1,11 +1,12 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace PostProject
 {
     /// <summary>
     /// Interaction logic for Employee.xaml
     /// </summary>
-    public partial class Employee : Window
+    public partial class Employee : Page
     {
         public Employee()
         {
@@ -44,9 +45,7 @@ namespace PostProject
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            var p = new MainWindow();
-            p.Show();
-            this.Close();
+            Application.Current.MainWindow.Content = new Login();
         }
 
         private void HomeB_Click(object sender, RoutedEventArgs e)
