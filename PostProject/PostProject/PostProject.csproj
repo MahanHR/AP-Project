@@ -8,12 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\05.jpg" />
-    <None Remove="Resources\Background.jpg" />
-    <None Remove="Resources\Home.png" />
+    <None Remove="Sources\back.png" />
+    <None Remove="Sources\Home.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Sources\back.png" />
+    <Resource Include="Sources\Home.png" />
     <Resource Include="Resources\Background.jpg" />
     <Resource Include="Resources\Home.png" />
   </ItemGroup>
