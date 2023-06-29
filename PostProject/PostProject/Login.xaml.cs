@@ -70,7 +70,6 @@ namespace PostProject
                         SqlCommand cmd = new(commandup, conn);
                         cmd.BeginExecuteNonQuery();
                         Application.Current.MainWindow.Content = new Customer();
-                        this.Close();
                         throw new Exception();
                     }
                 }
@@ -82,6 +81,11 @@ namespace PostProject
             {
                 Error.Text = ex.Message;
             }
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
