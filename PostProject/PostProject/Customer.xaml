@@ -8,44 +8,36 @@
       Title="Customer" Height="600" Width="900">
     <Grid>
         <Grid.Background>
-            <ImageBrush  ImageSource="/Resources/Background.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
         </Grid.Background>
-        <StackPanel HorizontalAlignment="left" Name="stack1">
-            <StackPanel HorizontalAlignment="Center">
-                <Button Name="OrderReport" Click="OrderReport_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
-                    <Bold>Orders' Report</Bold>
-                </Button>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Button Name="PackageInfo" Click="PackageInfo_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
-                    <Bold>Package Info</Bold>
-                </Button>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Button Name="CustomerWallet" Click="CustomerWallet_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
-                    <Bold>Customer Wallet</Bold>
-                </Button>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Button Name="EditUandP" Click="EditUandP_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
-                    <Bold>Edit Username and Pass</Bold>
-                </Button>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Button Name="Exit" Click="Exit_Click" Margin="10,20" Background="#004f92" Foreground="WhiteSmoke" Width="170">
-                    <Bold>Exit this account</Bold>
-                </Button>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Button Name="HomeB" Click="HomeB_Click" Margin="10,25" Background="#00609c" Foreground="WhiteSmoke" Width="70">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack2">
-                        <Image Source="Resources/Home.png"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="left" VerticalAlignment="Center" Name="stack1" Grid.Column="0">
+            <Button Name="OrderReport" Click="OrderReport_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
+                <Bold>Orders' Report</Bold>
+            </Button>
+            <Button Name="PackageInfo" Click="PackageInfo_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
+                <Bold>Package Info</Bold>
+            </Button>
+            <Button Name="CustomerWallet" Click="CustomerWallet_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
+                <Bold>Customer Wallet</Bold>
+            </Button>
+            <Button Name="EditUandP" Click="EditUandP_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
+                <Bold>Edit Username and Pass</Bold>
+            </Button>
+            <Button Name="Exit" Click="Exit_Click" Margin="10,20" Background="#004f92" Foreground="WhiteSmoke" Width="170">
+                <Bold>Exit this account</Bold>
+            </Button>
+            <Button Name="HomeB" Click="HomeB_Click" Margin="10,25" Background="#00609c" Foreground="WhiteSmoke" Width="80">
+                <Image Source="Resources/Home.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="stack3" Margin="191,0,0,0">
-            <Frame x:Name="ButtonShow"></Frame>
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="stack3" Grid.Column="1">
+            <Frame x:Name="ButtonShow">
+                
+            </Frame>
         </StackPanel>
         <Border BorderBrush="Black" BorderThickness="2"></Border>
     </Grid>

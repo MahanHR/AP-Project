@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Background.jpg" Stretch="UniformToFill"></ImageBrush>
+            <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

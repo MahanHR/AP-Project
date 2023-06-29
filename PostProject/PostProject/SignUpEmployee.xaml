@@ -8,7 +8,7 @@
       Title="MM Post" Height="600" Width="900">
     <Grid x:Name="myGrid">
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Background.jpg" Stretch="UniformToFill"></ImageBrush>
+            <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
