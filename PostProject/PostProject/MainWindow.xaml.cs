@@ -110,7 +110,7 @@ namespace PostProject
                 {
                     if (data.Rows[i][6].ToString() == Uname.Text.ToString() && data.Rows[i][7].ToString() == Pass.Password.ToString())
                     {
-                        string commandup = "update Customer Set CustomerID = '" + data.Rows[i][0].ToString() + "',FirstName = '" + data.Rows[i][1].ToString() + "',LastName = '" + data.Rows[i][2].ToString() + "',Email = '" + data.Rows[i][3].ToString() + "',SSN = '" + data.Rows[i][4].ToString() + "',Phone = '" + data.Rows[i][5].ToString() + "',UserName = '" + data.Rows[i][6].ToString() + "',PassWord = '" + data.Rows[i][7].ToString() + "',isEntered = '" + 1 + "' where UserName = '" + Uname.Text.ToString() + "'";
+                        string commandup = "update Customer Set CustomerID = '" + data.Rows[i][0].ToString() + "',FirstName = '" + data.Rows[i][1].ToString() + "',LastName = '" + data.Rows[i][2].ToString() + "',Email = '" + data.Rows[i][3].ToString() + "',SSN = '" + data.Rows[i][4].ToString() + "',Phone = '" + data.Rows[i][5].ToString() + "',UserName = '" + data.Rows[i][6].ToString() + "',PassWord = '" + data.Rows[i][7].ToString() + "',isEntered = '" + 2 + "' where UserName = '" + Uname.Text.ToString() + "'";
                         SqlCommand cmd = new SqlCommand(commandup, conn);
                         cmd.BeginExecuteNonQuery();
                         conn.Close();
