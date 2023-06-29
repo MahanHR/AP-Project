@@ -20,7 +20,7 @@ namespace PostProject
 
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.MainWindow.Content = new SignUpEmployee();
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
@@ -83,7 +83,7 @@ namespace PostProject
             }
         }
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void Uname_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

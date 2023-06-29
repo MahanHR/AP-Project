@@ -11,13 +11,14 @@
             <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack2">
+            <TextBlock x:Name="Error" Text="" FontWeight="Bold" Foreground="OrangeRed" Margin="0,10" Width="164"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Name</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_Name"></TextBox>
+                <TextBox x:Name="Name" Margin="0,10" Width="120" TextChanged="TextBox_Name"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>LastName</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_LName"></TextBox>
+                <TextBox x:Name="LName" Margin="0,10" Width="120" TextChanged="TextBox_LName"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Personnel ID</Bold></TextBlock>
@@ -25,26 +26,27 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>UserName</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_UName"></TextBox>
+                <TextBox x:Name="UName" Margin="0,10" Width="120" TextChanged="TextBox_UName"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Password</Bold></TextBlock>
-                <PasswordBox Margin="0,10" Width="120" PasswordChanged="PasswordBox_Pass"></PasswordBox>
+                <PasswordBox x:Name="Pass" Margin="0,10" Width="120" PasswordChanged="PasswordBox_Pass"></PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Confirm Password</Bold></TextBlock>
-                <PasswordBox Margin="0,10" Width="120" PasswordChanged="PasswordBox_Confirm"></PasswordBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Confirm Pass</Bold></TextBlock>
+                <PasswordBox x:Name="PassCon" Margin="0,10" Width="120" PasswordChanged="PasswordBox_Confirm"></PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Email</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_Email"></TextBox>
+                <TextBox x:Name="Email" Margin="0,10" Width="120" TextChanged="TextBox_Email"></TextBox>
             </StackPanel>
-            <Button Name ="SignUp"  Margin="5" Width="240" Foreground="WhiteSmoke" Background="#004f92">
+            <Button x:Name ="SignUp" Click="SignUp_Click"  Margin="5" Width="240" Foreground="WhiteSmoke" Background="#004f92">
                 <Bold>SignUp</Bold>
             </Button>
-            <Button Name ="Login" Margin="15"  Width="240" Foreground="WhiteSmoke" Background="#00609c" Click="Login_Click">
+            <Button x:Name ="Login" Margin="15" Background="#00609c" Width="240" Click="Login_Click" Foreground="WhiteSmoke">
                 <Bold>Login</Bold>
             </Button>
+            <TextBlock Margin="0,10" Width="240"></TextBlock>
         </StackPanel>
     </Grid>
 </Page>
