@@ -18,6 +18,10 @@ namespace PostProject
             Application.Current.MainWindow.Content = new Employee();
         }
 
+        private void SignUp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             try
