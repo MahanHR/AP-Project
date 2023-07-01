@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace PostProject
 {
     /// <summary>
-    /// Interaction logic for Employee.xaml
+    /// Interaction logic for Employees.xaml
     /// </summary>
     public partial class Employees : Window
     {
