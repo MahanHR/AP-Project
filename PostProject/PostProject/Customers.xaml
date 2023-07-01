@@ -31,7 +31,7 @@
                 <Bold>Exit this account</Bold>
             </Button>
             <Button Name="HomeB" Click="HomeB_Click" Margin="10,25" Background="#00609c" Foreground="WhiteSmoke" Width="80">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Name="stack2">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="62" Name="stack2">
                     <Image Source="Sources/Home.png"/>
                 </StackPanel>
             </Button>
