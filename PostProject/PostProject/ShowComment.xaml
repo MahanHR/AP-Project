@@ -7,12 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
-        </Grid.Background>
-        <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="400" Name="stack1">
-            <TextBlock x:Name="Orders" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="WhiteSmoke" Width="500" Height="335"></TextBlock>
-            <Button Name="ShowOrders" Click="ShowOrders_Click" Background="#00609c" Foreground="WhiteSmoke" Width="170">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
+            <TextBlock x:Name="Orders" FontWeight="Bold" TextAlignment="Center" Foreground="WhiteSmoke" Width="500" Height="335"></TextBlock>
+            <Button Name="ShowOrders" Click="ShowOrders_Click" Background="#00609c" Foreground="WhiteSmoke" Width="240">
                 <Bold>Show Comments</Bold>
             </Button>
         </StackPanel>
