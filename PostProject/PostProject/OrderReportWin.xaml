@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="PostProject.OrderReportWin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostProject"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="335" Name="stack1">
+            <TextBox x:Name="Orders" Width="300" Foreground="WhiteSmoke" Background="Transparent" Height="300" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Center" Text="" FontWeight="Bold" VerticalScrollBarVisibility="Visible"></TextBox>
+            <Button x:Name="ShowOrders" Click="ShowOrders_Click" Background="#00609c" Foreground="WhiteSmoke" Width="170">
+                <Bold>
+                    <Run Text="Show Orders"/>
+                </Bold>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
