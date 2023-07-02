@@ -23,7 +23,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Personnel ID</Bold></TextBlock>
-                    <TextBox Margin="0,10" Width="120" TextChanged="TextBox_PersonnelID"></TextBox>
+                    <TextBox x:Name="PersonnelID" Margin="0,10" Width="120" TextChanged="TextBox_PersonnelID"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>UserName</Bold></TextBlock>
