@@ -7,6 +7,7 @@ namespace PostProject
     /// </summary>
     public partial class Employees : Window
     {
+        public string EmployeeID = "";
         public Employees()
         {
             InitializeComponent();

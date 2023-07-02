@@ -20,8 +20,10 @@ namespace PostProject
     /// </summary>
     public partial class CustomerWalletWin : UserControl
     {
-        public CustomerWalletWin()
+        public string CustomerID = "";
+        public CustomerWalletWin(string ID)
         {
+            CustomerID = ID;
             InitializeComponent();
         }
 
