@@ -30,7 +30,7 @@
             <Button Name="Exit" Click="Exit_Click" Margin="10,20" Background="#004f92" Foreground="WhiteSmoke" Width="170">
                 <Bold>Exit this account</Bold>
             </Button>
-            <Button Name="HomeB" Click="HomeB_Click" Margin="10,25" Background="#00609c" Foreground="WhiteSmoke" Width="80">
+            <Button Name="HomeB" Click="HomeB_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="80">
                 <Image Source="Resources/Home.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
         </StackPanel>

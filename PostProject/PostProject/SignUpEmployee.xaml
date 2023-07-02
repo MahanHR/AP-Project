@@ -11,21 +11,21 @@
             <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack2">
-            <TextBlock x:Name="Error" Text="" FontWeight="Bold" Foreground="OrangeRed" Margin="0,10" Width="164"></TextBlock>
+            <TextBlock x:Name="Error" Text="" TextAlignment="Center" FontWeight="Bold" Foreground="OrangeRed" Margin="0,10"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Name</Bold></TextBlock>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>First Name</Bold></TextBlock>
                 <TextBox x:Name="Name" Margin="0,10" Width="120" TextChanged="TextBox_Name"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>LastName</Bold></TextBlock>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Last Name</Bold></TextBlock>
                 <TextBox x:Name="LName" Margin="0,10" Width="120" TextChanged="TextBox_LName"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Personnel ID</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_PersonnelID"></TextBox>
+                <TextBox x:Name="PersonnelID" Margin="0,10" Width="120" TextChanged="TextBox_PersonnelID"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>UserName</Bold></TextBlock>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Username</Bold></TextBlock>
                 <TextBox x:Name="UName" Margin="0,10" Width="120" TextChanged="TextBox_UName"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -33,7 +33,7 @@
                 <PasswordBox x:Name="Pass" Margin="0,10" Width="120" PasswordChanged="PasswordBox_Pass"></PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Confirm Pass</Bold></TextBlock>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Confirm Password</Bold></TextBlock>
                 <PasswordBox x:Name="PassCon" Margin="0,10" Width="120" PasswordChanged="PasswordBox_Confirm"></PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

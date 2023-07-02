@@ -10,7 +10,11 @@
         <Grid.Background>
             <ImageBrush ImageSource="Sources/back.png" Stretch="UniformToFill"/>
         </Grid.Background>
-        <StackPanel HorizontalAlignment="left" VerticalAlignment="Center" Name="stack1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="left" VerticalAlignment="Center" Name="stack1" Grid.Column="0">
             <StackPanel HorizontalAlignment="Center" Height="50">
                 <Button Name="RegisterCustomer" Click="RegisterCustomer_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
                     <Bold>Register Customer</Bold>
@@ -46,15 +50,13 @@
                     <Bold>Exit this account</Bold>
                 </Button>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Height="90">
-                <Button Name="HomeB" Click="HomeB_Click" Background="#00609c" Foreground="WhiteSmoke" Width="70">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="70" Height="62" Name="stack2">
-                        <Image Source="Sources/Home.png"/>
-                    </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Button Name="HomeB" Click="HomeB_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="90">
+                    <Image Source="Resources/Home.png"/>
                 </Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="434" Name="stack3" Margin="191,0,0,0">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="stack3" Grid.Column="1">
             <Frame x:Name="ButtonShow"></Frame>
         </StackPanel>
         <Border BorderBrush="Black" BorderThickness="1"></Border>
