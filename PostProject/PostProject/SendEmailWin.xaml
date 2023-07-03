@@ -9,8 +9,11 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="Error" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="0,10" Width="auto"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Package ID</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_TextChanged"></TextBox>
+                <TextBox Margin="0,10" Width="120" x:Name="IDsearch"></TextBox>
             </StackPanel>
             <Button Name="ShowInfo" Click="ShowInfo_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="240">
                 <Bold>Send Receiving Email</Bold>

@@ -102,6 +102,14 @@ namespace PostProject
                 {
                     SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
                     conn.Open();
+                    string com = "Select * from Orders where ID = '" + IDSearch.Text + "'";
+                    SqlDataAdapter sql = new(com,conn);
+                    DataTable data20 = new();
+                    sql.Fill(data20);
+                    if (data20.Rows[0][10].ToString().ToLower() == "no")
+                    {
+                        throw new Exception("This Order has not been sent yet");
+                    }
                     string command = "select * from Comments";
                     SqlDataAdapter adapter = new(command, conn);
                     DataTable data2 = new();
