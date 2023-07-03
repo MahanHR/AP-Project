@@ -7,48 +7,58 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <CheckBox x:Name="SSN" Content="SSN Number" FontWeight="Bold" Unchecked="SSN_Unchecked" Checked="CheckBox_Checked" Foreground="WhiteSmoke" Margin="5" Height="18" Width="230"/>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,0">
+                <CheckBox x:Name="SSN" Content="SSN Number" FontWeight="Bold" Unchecked="SSN_Unchecked" Checked="CheckBox_Checked" Foreground="WhiteSmoke" Margin="0,5" Height="18" Width="230"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <CheckBox x:Name="PackageType" Content="Package Type" FontWeight="Bold" Unchecked="PackageType_Unchecked" Checked="CheckBox_Checked_1" Foreground="WhiteSmoke" Margin="5" Height="18" Width="230"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,0">
+                <CheckBox x:Name="PackageType" Content="Package Type" FontWeight="Bold" Unchecked="PackageType_Unchecked" Checked="CheckBox_Checked_1" Foreground="WhiteSmoke" Margin="0,5" Height="18" Width="230"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <CheckBox x:Name="Price" Content="Price" Checked="CheckBox_Checked_2" Unchecked="Price_Unchecked" FontWeight="Bold" Foreground="WhiteSmoke" Height="18" Margin="5" Width="230"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,0">
+                <CheckBox x:Name="Price" Content="Price" Checked="CheckBox_Checked_2" Unchecked="Price_Unchecked" FontWeight="Bold" Foreground="WhiteSmoke" Height="18" Margin="0,5" Width="230"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <CheckBox x:Name="Weight" Content="Weight" Checked="CheckBox_Checked_3" Unchecked="Weight_Unchecked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="230"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,0">
+                <CheckBox x:Name="Weight" Content="Weight" Checked="CheckBox_Checked_3" Unchecked="Weight_Unchecked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="0,5" Height="18" Width="230"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <CheckBox x:Name="PostType" Content="Post Type" Checked="CheckBox_Checked_4" Unchecked="PostType_Unchecked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="230"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,0">
+                <CheckBox x:Name="PostType" Content="Post Type" Checked="CheckBox_Checked_4" Unchecked="PostType_Unchecked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="0,5" Height="18" Width="230"/>
             </StackPanel>
-            <StackPanel Margin="20">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Margin="20" HorizontalAlignment="Left" Width="240">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>SSN Number</Bold></TextBlock>
                     <TextBox x:Name="SBox" IsEnabled="False" Margin="0,5" Width="120" TextChanged="TextBox_TextChanged"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Price</Bold></TextBlock>
                     <TextBox x:Name="pBox" IsEnabled="False" Margin="0,5" Width="120" TextChanged="TextBox_TextChanged_1"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Weight</Bold></TextBlock>
                     <TextBox IsEnabled="False" x:Name="wBox" Margin="0,5" Width="120" TextChanged="TextBox_TextChanged_1"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <CheckBox IsEnabled="False" x:Name="Object" Content="Object" Unchecked="Object_Unchecked" Checked="Object_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="60"/>
                     <CheckBox IsEnabled="False" x:Name="Document" Content="Document" Checked="Document_Checked" Unchecked="Document_Unchecked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="90"/>
                     <CheckBox IsEnabled="False" x:Name="Fragile" Content="Fragile" Unchecked="Fragile_Unchecked" Checked="Fragile_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="60"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <CheckBox IsEnabled="False" x:Name="Ordinary" Content="Ordinary Post" Unchecked="Ordinary_Unchecked" Checked="Ordinary_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="120"/>
                     <CheckBox IsEnabled="False" x:Name="Speed" Content="Speed Post" Unchecked="Speed_Unchecked" Checked="Speed_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="100"/>
                 </StackPanel>
             </StackPanel>
-            <Button Name="Serach" Click="Serach_Click" Margin="5" Background="#00609c" Foreground="WhiteSmoke" Width="240">
+            <Button Name="Serach" Click="Serach_Click" Margin="20,5" Background="#00609c" HorizontalAlignment="Left" Foreground="WhiteSmoke" Width="240">
                 <Bold>Search</Bold>
             </Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+            <TextBox x:Name="Orders" Width="320" Height="345" IsReadOnly="True" BorderBrush="#1338BE" Foreground="WhiteSmoke" Background="Transparent" Text="" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Center" FontWeight="Bold" VerticalScrollBarVisibility="Visible" TextChanged="TextBox_TextChanged_2"/>
         </StackPanel>
     </Grid>
 </UserControl>

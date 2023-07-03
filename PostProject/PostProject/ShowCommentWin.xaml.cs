@@ -5,8 +5,10 @@ namespace PostProject
 {
     public partial class ShowCommentWin : UserControl
     {
-        public ShowCommentWin()
+        public string EmployeeID = "";
+        public ShowCommentWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
 

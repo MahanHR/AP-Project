@@ -4,6 +4,7 @@ namespace PostProject
 {
     public partial class Customers : Window
     {
+        public string CustomerID = "";
         public Customers()
         {
             InitializeComponent();
@@ -23,22 +24,22 @@ namespace PostProject
 
         public void EditUandP_Click(object sender, RoutedEventArgs e)
         {
-            ButtonShow.Content = new EditUandPWin();
+            ButtonShow.Content = new EditUandPWin(CustomerID);
         }
 
         public void CustomerWallet_Click(object sender, RoutedEventArgs e)
         {
-            ButtonShow.Content = new CustomerWalletWin();
+            ButtonShow.Content = new CustomerWalletWin(CustomerID);
         }
 
         public void PackageInfo_Click(object sender, RoutedEventArgs e)
         {
-            ButtonShow.Content = new PackageInfoWin();
+            ButtonShow.Content = new PackageInfoWin(CustomerID);
         }
 
         public void OrderReport_Click(object sender, RoutedEventArgs e)
         {
-            ButtonShow.Content = new OrderReportWin();
+            ButtonShow.Content = new OrderReportWin(CustomerID);
         }
     }
 }

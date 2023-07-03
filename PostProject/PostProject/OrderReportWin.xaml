@@ -8,7 +8,7 @@
              d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="335" Name="stack1">
-            <TextBox x:Name="Orders" Width="300" Foreground="WhiteSmoke" Background="Transparent" Height="300" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Center" Text="" FontWeight="Bold" VerticalScrollBarVisibility="Visible"></TextBox>
+            <TextBox x:Name="Orders" Width="auto" IsReadOnly="True" BorderBrush="#1338BE" Foreground="WhiteSmoke" Background="Transparent" Height="300" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Center" Text="" FontWeight="Bold" VerticalScrollBarVisibility="Visible"></TextBox>
             <Button x:Name="ShowOrders" Click="ShowOrders_Click" Background="#00609c" Foreground="WhiteSmoke" Width="170">
                 <Bold>
                     <Run Text="Show Orders"/>

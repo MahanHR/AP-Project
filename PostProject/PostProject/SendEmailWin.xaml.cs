@@ -5,8 +5,10 @@ namespace PostProject
 {
     public partial class SendEmailWin : UserControl
     {
-        public SendEmailWin()
+        public string EmployeeID = "";
+        public SendEmailWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
 

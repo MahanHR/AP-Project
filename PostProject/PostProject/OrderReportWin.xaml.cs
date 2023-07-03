@@ -8,8 +8,10 @@ namespace PostProject
 {
     public partial class OrderReportWin : UserControl
     {
-        public OrderReportWin()
+        public string CustomerID = "";
+        public OrderReportWin(string ID)
         {
+            CustomerID = ID;
             InitializeComponent();
         }
 
@@ -19,9 +21,9 @@ namespace PostProject
             string SSN = "", Sending = "";
             try
             {
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\HajAmir-Post\AP-Project\PostProject\PostProject\SQL\save.mdf;Integrated Security=True");
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
                 conn.Open();
-                string command = "select * from Customer where isEntered = '" + 2 + "'";
+                string command = "select * from Customer where CustomerID = '" + CustomerID + "'";
                 SqlDataAdapter adapter = new(command, conn);
                 DataTable data2 = new();
                 adapter.Fill(data2);
@@ -57,7 +59,7 @@ namespace PostProject
                         {
                             PoTy = "Speed";
                         }
-                        Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "\nPost Type : " + PoTy + "   Is Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "\nPrice : " + data.Rows[i][9].ToString() + "\n";
+                        Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "Price : " + data.Rows[i][9].ToString() + "\n\n";
                     }
                 }
                 if (found == 0)
@@ -72,11 +74,6 @@ namespace PostProject
             {
                 Orders.Text = ex.Message;
             }
-        }
-
-        private void Orders_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
         }
     }
 }

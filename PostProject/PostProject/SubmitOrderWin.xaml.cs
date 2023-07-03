@@ -5,8 +5,10 @@ namespace PostProject
 {
     public partial class SubmitOrderWin : UserControl
     {
-        public SubmitOrderWin()
+        public string EmployeeID = "";
+        public SubmitOrderWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
 

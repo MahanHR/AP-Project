@@ -5,8 +5,10 @@ namespace PostProject
 {
     public partial class PackageInfoEmpWin : UserControl
     {
-        public PackageInfoEmpWin()
+        public string EmployeeID = "";
+        public PackageInfoEmpWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
