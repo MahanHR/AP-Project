@@ -61,28 +61,20 @@ namespace PostProject
                     throw new Exception("Invalid Password");
                 }
                 //Buuuuuuuuuuuuuuuuuuuuuuuuuug!!!!!!!!!!!!!!!!!!!!!!!!1
-                for (int i = 0; i < data.Rows.Count; i++)
-                {
-                    if (data.Rows[i][0].ToString() == CustomerIDin)
-                    {
-                        string commandup = "insert into Customer values('"+ Convert.ToInt32(data.Rows[i][0].ToString()) +"','"+ data.Rows[i][1].ToString() +"','"+ data.Rows[i][2].ToString() +"','"+ data.Rows[i][3].ToString() +"','"+ data.Rows[i][4].ToString() +"','"+ data.Rows[i][5].ToString() +"','"+ userName +"','"+ passW +"' )";
-                        /*
-                        SqlCommand cmd = new SqlCommand("UpdateUserPass", conn);
-                        
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@CustomerID", Convert.ToInt32(data.Rows[i][4].ToString()));
-                        cmd.Parameters.AddWithValue("@UserName", userName);
-                        cmd.Parameters.AddWithValue("@Pass", passW);
-                        
-                        string commandup = "update Customer Set CustomerID = '" + data.Rows[i][0].ToString() + "',FirstName = '" + data.Rows[i][1].ToString() + "',LastName = '" + data.Rows[i][2].ToString() + "',Email = '" + data.Rows[i][3].ToString() + "',SSN = '" + data.Rows[i][4].ToString() + "',Phone = '" + data.Rows[i][5].ToString() + "',UserName = '" + userName + "',Pass = '" + passWord + "' where CustomerID = '" + CustomerIDin + "'";
-                        */
-                        SqlCommand cmd = new SqlCommand(commandup, conn);
-                        cmd.BeginExecuteNonQuery();
-                        conn.Close();
-                        throw new Exception("Success");
-                    }
-                }
+                string command2 = "select * from Customer where CustomerID = '" + CustomerIDin + "'";
+                SqlDataAdapter adapter2 = new(command2, conn);
+                DataTable data2 = new();
+                adapter.Fill(data2);
+                int jj = int.Parse(CustomerIDin);
+                //String query = "UPDATE Customer(CustomerID,FirstName,LastName,Email,SSN,Phone,UserName,Pass) VALUES (@id, @Fi, @La, @Em, @SSN, @Ph, @usern, @pass) WHERE CustomerID = '" + jj + "'";
+                String query = "UPDATE Customer SET UserName = @usern, Pass = @pass Where CustomerID = @id";
+                SqlCommand command3 = new SqlCommand(query, conn);
+                command3.Parameters.AddWithValue("@id", jj);
+                command3.Parameters.AddWithValue("@usern", userName);
+                command3.Parameters.AddWithValue("@pass", passW);
+                command3.ExecuteNonQuery();
                 conn.Close();
+                throw new Exception("Username and pass changed successfully");
             }
             catch (Exception ex)
             {
@@ -91,3 +83,20 @@ namespace PostProject
         }
     }
 }
+
+
+
+/*
+ Syntax to insert :              (Don't Erase It)
+ String query = "INSERT INTO Customer (CustomerID,FirstName,LastName,Email,SSN,Phone,UserName,Pass) VALUES (@id, @Fi, @La, @Em, @SSN, @Ph, @usern, @pass)";
+                SqlCommand command3 = new SqlCommand(query, conn);
+                command3.Parameters.AddWithValue("@id", jj+1);
+                command3.Parameters.AddWithValue("@Fi", data2.Rows[0][1].ToString());
+                command3.Parameters.AddWithValue("@La", data2.Rows[0][2].ToString());
+                command3.Parameters.AddWithValue("@Em", data2.Rows[0][3].ToString());
+                command3.Parameters.AddWithValue("@SSN", data2.Rows[0][4].ToString());
+                command3.Parameters.AddWithValue("@Ph", data2.Rows[0][5].ToString());
+                command3.Parameters.AddWithValue("@usern", userName);
+                command3.Parameters.AddWithValue("@pass", passW);
+                command3.ExecuteNonQuery(); 
+ */
