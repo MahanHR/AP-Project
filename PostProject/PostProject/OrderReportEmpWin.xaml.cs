@@ -50,6 +50,7 @@ namespace PostProject
                     {
                         command += " AND SSN = '" + SBox.Text + "'";
                     }
+                    isOneTrue++;
                 }
                 if (price)
                 {
@@ -61,6 +62,7 @@ namespace PostProject
                     {
                         command += " AND Price = '" + pBox.Text + "'";
                     }
+                    isOneTrue++;
                 }
                 if (weight)
                 {
@@ -72,6 +74,7 @@ namespace PostProject
                     {
                         command += " AND Weight = '" + wBox.Text + "'";
                     }
+                    isOneTrue++;
                 }
                 if (postType)
                 {
@@ -102,6 +105,7 @@ namespace PostProject
                                 command += " AND PostType = '" + 1 + "'";
                             }
                         }
+                        isOneTrue++;
                     }
                 }
                 if (packType)
@@ -142,11 +146,11 @@ namespace PostProject
                                 command += " AND PostType = '" + 1 + "' OR PostType = '" + 3 + "'";
                             }
                         }
+                        isOneTrue++;
                     }
                 }
                 SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
                 conn.Open();
-                throw new Exception(command);
                 SqlDataAdapter adapter = new(command, conn);
                 DataTable data = new();
                 adapter.Fill(data);
@@ -179,7 +183,7 @@ namespace PostProject
                 }
                 if (found == 0)
                 {
-                    throw new Exception("You have not submitted any order");
+                    throw new Exception("Nothing is ordered by this properties");
                 }
                 conn.Close();
                 throw new Exception(Sending);
