@@ -94,7 +94,7 @@ namespace PostProject
                 {
                     throw new Exception("Input format of email is not correct.");
                 }
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\HajAmir-Post\AP-Project\PostProject\PostProject\SQL\save.mdf;Integrated Security=True");
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
                 conn.Open();
                 string command = "select * from Employee";
                 SqlDataAdapter adapter = new(command, conn);
@@ -104,14 +104,26 @@ namespace PostProject
                 {
                     if ((string)data.Rows[i][4] == UName.Text)
                     {
+                        conn.Close();
                         throw new Exception("The username is already used");
                     }
                     if ((string)data.Rows[i][3] == Email.Text)
                     {
+                        conn.Close();
                         throw new Exception("The email is already used");
                     }
                 }
+                if (Pass.Password != PassCon.Password)
+                {
+                    throw new Exception("Repeated password does not match");
+                }
+                command = "insert into Employee values('" + int.Parse(PersonnelID.Text) + "','" + Name.Text + "','" + LName.Text + "','" + Email.Text + "','" + UName.Text + "','" + Pass.Password.ToString() + "','" + 0 + "')";
+                SqlCommand cmd = new(command, conn);
+                cmd.BeginExecuteNonQuery();
                 conn.Close();
+                var p = new MainWindow();
+                p.Show();
+                this.Close();
             }
             catch (Exception ex)
             {
