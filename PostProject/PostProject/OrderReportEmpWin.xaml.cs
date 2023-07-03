@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace PostProject
 {
@@ -20,13 +22,172 @@ namespace PostProject
     /// </summary>
     public partial class OrderReportEmpWin : UserControl
     {
-        public OrderReportEmpWin()
+        public string EmployeeID = "";
+        public OrderReportEmpWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
         private void Serach_Click(object sender, RoutedEventArgs e)
         {
-
+            string Sending = "";
+            try
+            {
+                bool ssn = (SSN.IsChecked == true);
+                bool packType = (PackageType.IsChecked == true && (Object.IsChecked == true || Document.IsChecked == true || Fragile.IsChecked == true));
+                bool price = (Price.IsChecked == true);
+                bool weight = (Weight.IsChecked == true);
+                bool postType = (PostType.IsChecked == true && (Ordinary.IsChecked == true || Speed.IsChecked == true));
+                string command = "select * from Orders";
+                int isOneTrue = 0;
+                if (ssn)
+                {
+                    if(isOneTrue == 0)
+                    {
+                        command += " WHERE SSN = '" + SBox.Text + "'";
+                    }
+                    else
+                    {
+                        command += " AND SSN = '" + SBox.Text + "'";
+                    }
+                }
+                if (price)
+                {
+                    if (isOneTrue == 0)
+                    {
+                        command += " WHERE Price = '" + pBox.Text + "'";
+                    }
+                    else
+                    {
+                        command += " AND Price = '" + pBox.Text + "'";
+                    }
+                }
+                if (weight)
+                {
+                    if (isOneTrue == 0)
+                    {
+                        command += " WHERE Weight = '" + wBox.Text + "'";
+                    }
+                    else
+                    {
+                        command += " AND Weight = '" + wBox.Text + "'";
+                    }
+                }
+                if (postType)
+                {
+                    bool speed = (Speed.IsChecked == true);
+                    bool ordinary = (Ordinary.IsChecked == true);
+                    bool both = speed && ordinary;
+                    if (!(both))
+                    {
+                        if (isOneTrue == 0)
+                        {
+                            if (speed)
+                            {
+                                command += " WHERE PostType = '" + 2 + "'";
+                            }
+                            else if (ordinary)
+                            {
+                                command += " WHERE PostType = '" + 1 + "'";
+                            }
+                        }
+                        else
+                        {
+                            if (speed)
+                            {
+                                command += " AND PostType = '" + 2 + "'";
+                            }
+                            else if (ordinary)
+                            {
+                                command += " AND PostType = '" + 1 + "'";
+                            }
+                        }
+                    }
+                }
+                if (packType)
+                {
+                    bool fragile = (Fragile.IsChecked == true);
+                    bool document = (Document.IsChecked == true);
+                    bool obj = (Object.IsChecked == true);
+                    bool all = fragile && document && obj;
+                    if (!(all))
+                    {
+                        if (isOneTrue == 0)
+                        {
+                            if (fragile && document)
+                            {
+                                command += " WHERE PostType = '" + 2 + "' OR PostType = '" + 3 + "'";
+                            }
+                            else if (document && obj)
+                            {
+                                command += " WHERE PostType = '" + 2 + "' OR PostType = '" + 1 + "'";
+                            }
+                            else if (fragile && obj)
+                            {
+                                command += " WHERE PostType = '" + 1 + "' OR PostType = '" + 3 + "'";
+                            }
+                        }
+                        else
+                        {
+                            if (fragile && document)
+                            {
+                                command += " AND PostType = '" + 2 + "' OR PostType = '" + 3 + "'";
+                            }
+                            else if (document && obj)
+                            {
+                                command += " AND PostType = '" + 2 + "' OR PostType = '" + 1 + "'";
+                            }
+                            else if (fragile && obj)
+                            {
+                                command += " AND PostType = '" + 1 + "' OR PostType = '" + 3 + "'";
+                            }
+                        }
+                    }
+                }
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                conn.Open();
+                throw new Exception(command);
+                SqlDataAdapter adapter = new(command, conn);
+                DataTable data = new();
+                adapter.Fill(data);
+                int found = 0;
+                for(int i = 0; i < data.Rows.Count; i++)
+                {
+                    found++;
+                    string Ty = "", PoTy = "";
+                    if (int.Parse(data.Rows[i][3].ToString()) == 1)
+                    {
+                        Ty = "Object";
+                    }
+                    else if (int.Parse(data.Rows[i][3].ToString()) == 2)
+                    {
+                        Ty = "Document";
+                    }
+                    else if (int.Parse(data.Rows[i][3].ToString()) == 3)
+                    {
+                        Ty = "Fragile";
+                    }
+                    if (int.Parse(data.Rows[i][5].ToString()) == 1)
+                    {
+                        PoTy = "Ordinary";
+                    }
+                    else if (int.Parse(data.Rows[i][5].ToString()) == 2)
+                    {
+                        PoTy = "Speed";
+                    }
+                    Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "Price : " + data.Rows[i][9].ToString() + "\n\n";
+                }
+                if (found == 0)
+                {
+                    throw new Exception("You have not submitted any order");
+                }
+                conn.Close();
+                throw new Exception(Sending);
+            }
+            catch (Exception ex)
+            {
+                Orders.Text = ex.Message;
+            }
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -172,6 +333,11 @@ namespace PostProject
         }
 
         private void Speed_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
         {
 
         }

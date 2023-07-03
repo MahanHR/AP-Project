@@ -20,8 +20,10 @@ namespace PostProject
     /// </summary>
     public partial class SubmitOrderWin : UserControl
     {
-        public SubmitOrderWin()
+        public string EmployeeID = "";
+        public SubmitOrderWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
         private void Search_Click(object sender, RoutedEventArgs e)

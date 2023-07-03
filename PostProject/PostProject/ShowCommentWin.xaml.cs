@@ -20,8 +20,10 @@ namespace PostProject
     /// </summary>
     public partial class ShowCommentWin : UserControl
     {
-        public ShowCommentWin()
+        public string EmployeeID = "";
+        public ShowCommentWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
         private void ShowOrders_Click(object sender, RoutedEventArgs e)

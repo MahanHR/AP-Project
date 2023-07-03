@@ -20,8 +20,10 @@ namespace PostProject
     /// </summary>
     public partial class RegisterCustomerWin : UserControl
     {
-        public RegisterCustomerWin()
+        public string EmployeeID = "";
+        public RegisterCustomerWin(string inp)
         {
+            EmployeeID = inp; 
             InitializeComponent();
         }
         public void TextBox_Name(object sender, TextChangedEventArgs e)

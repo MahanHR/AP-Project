@@ -20,8 +20,10 @@ namespace PostProject
     /// </summary>
     public partial class SendEmailWin : UserControl
     {
-        public SendEmailWin()
+        public string EmployeeID = "";
+        public SendEmailWin(string inp)
         {
+            EmployeeID = inp;
             InitializeComponent();
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
