@@ -24,18 +24,8 @@ namespace PostProject
         {
             try
             {
-                Regex usernameRegex = new(@"^\S{3,32}$");
-                Regex customerPasswordRegex = new(@"^\d{8}$");
-                Regex employeePasswordRegex = new(@"^(?=\S{8})(?!\S{33})(\S*[a-z]+\S*[A-Z]+\S*|\S*[A-Z]+\S*[a-z]+\S*)$");
-                if (!usernameRegex.Match(Uname.Text.ToString()).Success)
-                {
-                    throw new Exception("Input format of username is not correct");
-                }
-                if (!(customerPasswordRegex.Match(Pass.Password.ToString()).Success | employeePasswordRegex.Match(Pass.Password.ToString()).Success))
-                {
-                    throw new Exception("Input format of password is not correct");
-                }
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\HP\source\repos\HajAmir-Post\AP-Project\PostProject\PostProject\SQL\save.mdf;Integrated Security=True");
+                
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
                 conn.Open();
                 string command = "select * from Employee";
                 SqlDataAdapter adapter = new(command, conn);

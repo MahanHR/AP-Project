@@ -8,9 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SQL\**" />
+    <EmbeddedResource Remove="SQL\**" />
+    <None Remove="SQL\**" />
+    <Page Remove="SQL\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Sources\back.png" />
     <None Remove="Sources\Home.png" />
-    <None Remove="SQL\save.mdf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +28,6 @@
     <Resource Include="Sources\Home.png" />
     <Resource Include="Resources\Background.jpg" />
     <Resource Include="Resources\Home.png" />
-    <Resource Include="SQL\save.mdf" />
   </ItemGroup>
 
 </Project>
