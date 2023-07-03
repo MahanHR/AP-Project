@@ -36,6 +36,8 @@ namespace PostProject
             string SSN = "", Sending = "", ID = IDSearch.Text;
             try
             {
+                Comment.IsEnabled = false;
+                Comment.Text = "Leave your comment here";
                 SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
                 conn.Open();
                 string command = "select * from Customer where CustomerID = '" + CustomerID + "'";
@@ -82,11 +84,54 @@ namespace PostProject
                     throw new Exception("You have not ordered this package");
                 }
                 conn.Close();
+                Comment.IsEnabled = true;
+                Comment.Text = "";
                 throw new Exception(Sending);
             }
             catch (Exception ex)
             {
                 Orders.Text = ex.Message;
+            }
+        }
+
+        private void SendComment_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Comment.IsEnabled)
+                {
+                    SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                    conn.Open();
+                    string command = "select * from Comments";
+                    SqlDataAdapter adapter = new(command, conn);
+                    DataTable data2 = new();
+                    adapter.Fill(data2);
+                    for (int i = 0; i < data2.Rows.Count; i++)
+                    {
+                        if (data2.Rows[i][1].ToString() == CustomerID)
+                        {
+                            String query = "UPDATE Comments SET Comment = @c Where CustomerID = @id";
+                            SqlCommand command3 = new SqlCommand(query, conn);
+                            command3.Parameters.AddWithValue("@id", int.Parse(CustomerID));
+                            command3.Parameters.AddWithValue("@c", Comment.Text);
+                            command3.ExecuteNonQuery();
+                            conn.Close();
+                            throw new Exception("Your Comment is submitted");
+                        }
+                    }
+                    String query2 = "INSERT INTO Comments (OrderID,CustomerID,Comment) VALUES (@Oid, @Cid, @Co)";
+                    SqlCommand command2 = new SqlCommand(query2, conn);
+                    command2.Parameters.AddWithValue("@Oid", int.Parse(IDSearch.Text));
+                    command2.Parameters.AddWithValue("@Cid", int.Parse(CustomerID));
+                    command2.Parameters.AddWithValue("@Co", Comment.Text);
+                    command2.ExecuteNonQuery();
+                    conn.Close();
+                    throw new Exception("Your Comment is submitted");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.Text = ex.Message;
             }
         }
     }
