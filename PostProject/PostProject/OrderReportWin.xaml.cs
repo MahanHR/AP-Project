@@ -1,25 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
-using System.Data;
 
 namespace PostProject
 {
-    /// <summary>
-    /// Interaction logic for OrderReportWin.xaml
-    /// </summary>
     public partial class OrderReportWin : UserControl
     {
         public string CustomerID = "";
@@ -28,6 +14,7 @@ namespace PostProject
             CustomerID = ID;
             InitializeComponent();
         }
+
         private void ShowOrders_Click(object sender, RoutedEventArgs e)
         {
             Orders.Text = "";
@@ -48,7 +35,7 @@ namespace PostProject
                 int found = 0;
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    if(SSN == data.Rows[i][4].ToString())
+                    if (SSN == data.Rows[i][4].ToString())
                     {
                         found++;
                         string Ty = "", PoTy = "";
@@ -60,7 +47,7 @@ namespace PostProject
                         {
                             Ty = "Document";
                         }
-                        else if (int.Parse(data.Rows[i][3].ToString()) == 3) 
+                        else if (int.Parse(data.Rows[i][3].ToString()) == 3)
                         {
                             Ty = "Fragile";
                         }
@@ -75,11 +62,12 @@ namespace PostProject
                         Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "Price : " + data.Rows[i][9].ToString() + "\n\n";
                     }
                 }
-                if(found == 0)
+                if (found == 0)
                 {
                     throw new Exception("You have not submitted any order");
                 }
                 conn.Close();
+                Sending = Sending + Sending + Sending + Sending + Sending + Sending + Sending + Sending + Sending + Sending;
                 throw new Exception(Sending);
             }
             catch (Exception ex)

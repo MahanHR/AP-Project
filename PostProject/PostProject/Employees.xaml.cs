@@ -2,9 +2,6 @@
 
 namespace PostProject
 {
-    /// <summary>
-    /// Interaction logic for Employees.xaml
-    /// </summary>
     public partial class Employees : Window
     {
         public string EmployeeID = "";
