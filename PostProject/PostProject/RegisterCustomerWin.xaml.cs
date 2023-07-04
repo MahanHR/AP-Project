@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
@@ -133,9 +135,26 @@ namespace PostProject
                 //
                 string password = generated;
                 int balance = 0;
+                
                 command = "insert into Customer values('" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
                 conn.Close();
+                
+                string fromMail = "mmpostproject@gmail.com";
+                string fromPassword = "jkkglspngxbghnfu";
 
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress(fromMail);
+                mailMessage.Subject = "Your username and password";
+                mailMessage.To.Add(new MailAddress(email));
+                mailMessage.Body = "<html><body>Here is your username and passwor for MMPostProjecct\nUsername: " + username + "\nPassword: " + password + "</body></html>";
+                mailMessage.IsBodyHtml = true;
+                var smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential(fromMail, fromPassword),
+                    EnableSsl = true
+                };
+                smtpClient.Send(mailMessage);
             }
             catch (Exception ex)
             {
