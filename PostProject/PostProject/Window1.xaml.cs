@@ -102,15 +102,20 @@ namespace PostProject
                 adapter.Fill(data);
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
+                    if ((string)data.Rows[i][0] == PersonnelID.Text)
+                    {
+                        conn.Close();
+                        throw new Exception("This personnel ID is already used");
+                    }
                     if ((string)data.Rows[i][4] == UName.Text)
                     {
                         conn.Close();
-                        throw new Exception("The username is already used");
+                        throw new Exception("This username is already used");
                     }
                     if ((string)data.Rows[i][3] == Email.Text)
                     {
                         conn.Close();
-                        throw new Exception("The email is already used");
+                        throw new Exception("This email is already used");
                     }
                 }
                 if (Pass.Password != PassCon.Password)

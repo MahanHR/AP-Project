@@ -8,27 +8,28 @@
              d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack2">
+            <TextBlock x:Name="error" Text="" FontWeight="Bold" TextAlignment="Center" Foreground="OrangeRed" Margin="0,10"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Name</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_Name"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>First Name</Bold></TextBlock>
+                <TextBox x:Name="FName" Margin="0,10" Width="120" TextChanged="TextBox_Name"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>LastName</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_LName"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Last Name</Bold></TextBlock>
+                <TextBox x:Name="LName" Margin="0,10" Width="120" TextChanged="TextBox_LName"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>SSN Number</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_SSNNumber"></TextBox>
+                <TextBox x:Name="SSN" Margin="0,10" Width="120" TextChanged="TextBox_SSNNumber"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Phone Num</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_Number"></TextBox>
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Phone Number</Bold></TextBlock>
+                <TextBox x:Name="PhoneNo" Margin="0,10" Width="120" TextChanged="TextBox_Number"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Email</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_Email"></TextBox>
+                <TextBox x:Name="Email" Margin="0,10" Width="120" TextChanged="TextBox_Email"></TextBox>
             </StackPanel>
-            <Button Name ="SignUp"  Margin="5" Width="240" Foreground="WhiteSmoke" Background="#004f92">
+            <Button Name ="SignUp" Margin="5" Width="240" Foreground="WhiteSmoke" Background="#004f92" Click="SignUp_Click">
                 <Bold>SignUp</Bold>
             </Button>
         </StackPanel>
