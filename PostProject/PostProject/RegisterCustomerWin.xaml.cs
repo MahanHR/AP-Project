@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PostProject
 {
@@ -58,22 +59,27 @@ namespace PostProject
                 Regex emailRegex = new(@"^[\w-\.]{3,32}@[A-z]{3,32}.[A-z]{2,3}$");
                 if (!firstNameRegex.Match(FName.Text.ToString()).Success)
                 {
+                    message.Foreground = Brushes.OrangeRed;
                     throw new Exception("Input format of first name is not correct.");
                 }
                 if (!lastNameRegex.Match(LName.Text.ToString()).Success)
                 {
+                    message.Foreground = Brushes.OrangeRed;
                     throw new Exception("Input format of last name is not correct.");
                 }
                 if (!ssnRegex.Match(SSN.Text.ToString()).Success)
                 {
+                    message.Foreground = Brushes.OrangeRed;
                     throw new Exception("Input format of SSN is not correct");
                 }
                 if (!phoneNumberRegex.Match(PhoneNo.Text.ToString()).Success)
                 {
+                    message.Foreground = Brushes.OrangeRed;
                     throw new Exception("Input format of phone number is not correct");
                 }
                 if (!emailRegex.Match(Email.Text.ToString()).Success)
                 {
+                    message.Foreground = Brushes.OrangeRed;
                     throw new Exception("Input format of email is not correct.");
                 }
                 string firstName = FName.Text.ToString();
@@ -94,16 +100,19 @@ namespace PostProject
                     if ((string)data.Rows[i][4] == SSN.Text)
                     {
                         conn.Close();
+                        message.Foreground = Brushes.OrangeRed;
                         throw new Exception("Person with this SSN already has an account");
                     }
                     if ((string)data.Rows[i][3] == Email.Text)
                     {
                         conn.Close();
+                        message.Foreground = Brushes.OrangeRed;
                         throw new Exception("The email is already used");
                     }
                     if ((string)data.Rows[i][5] == PhoneNo.Text)
                     {
                         conn.Close();
+                        message.Foreground = Brushes.OrangeRed;
                         throw new Exception("This phone number is already used");
                     }
                 }
@@ -135,10 +144,12 @@ namespace PostProject
                 //
                 string password = generated;
                 int balance = 0;
-                
-                command = "insert into Customer values('" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
+
+                command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
+                SqlCommand cmd = new(command, conn);
+                cmd.BeginExecuteNonQuery();
                 conn.Close();
-                
+
                 string fromMail = "mmpostproject@gmail.com";
                 string fromPassword = "jkkglspngxbghnfu";
 
@@ -155,10 +166,12 @@ namespace PostProject
                     EnableSsl = true
                 };
                 smtpClient.Send(mailMessage);
+                message.Foreground = Brushes.White;
+                throw new Exception("Customer registered successfully.\nthe username and password will be sent to customer's email");
             }
             catch (Exception ex)
             {
-                error.Text = ex.Message;
+                message.Text = ex.Message;
             }
         }
     }

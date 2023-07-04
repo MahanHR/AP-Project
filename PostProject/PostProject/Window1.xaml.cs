@@ -102,7 +102,7 @@ namespace PostProject
                 adapter.Fill(data);
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    if ((string)data.Rows[i][0] == PersonnelID.Text)
+                    if (data.Rows[i][0].ToString() == PersonnelID.Text)
                     {
                         conn.Close();
                         throw new Exception("This personnel ID is already used");
@@ -122,7 +122,7 @@ namespace PostProject
                 {
                     throw new Exception("Repeated password does not match");
                 }
-                command = "insert into Employee values('" + int.Parse(PersonnelID.Text) + "','" + Name.Text + "','" + LName.Text + "','" + Email.Text + "','" + UName.Text + "','" + Pass.Password.ToString() + "','" + 0 + "')";
+                command = "insert into Employee values('" + int.Parse(PersonnelID.Text) + "','" + Name.Text + "','" + LName.Text + "','" + Email.Text + "','" + UName.Text + "','" + Pass.Password.ToString() + "')";
                 SqlCommand cmd = new(command, conn);
                 cmd.BeginExecuteNonQuery();
                 conn.Close();
