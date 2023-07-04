@@ -67,7 +67,6 @@ namespace PostProject
                     throw new Exception("You have not submitted any order");
                 }
                 conn.Close();
-                Sending = Sending + Sending + Sending + Sending + Sending + Sending + Sending + Sending + Sending + Sending;
                 throw new Exception(Sending);
             }
             catch (Exception ex)
