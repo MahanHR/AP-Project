@@ -55,7 +55,7 @@ namespace PostProject
                     if (SSN == data.Rows[i][4].ToString() && ID == data.Rows[i][0].ToString())
                     {
                         found++;
-                        string Ty = "", PoTy = "";
+                        string Ty = "", PoTy = "",Stu = "";
                         if (int.Parse(data.Rows[i][3].ToString()) == 1)
                         {
                             Ty = "Object";
@@ -76,7 +76,23 @@ namespace PostProject
                         {
                             PoTy = "Speed";
                         }
-                        Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "Price : " + data.Rows[i][9].ToString() + "\n\n";
+                        if (int.Parse(data.Rows[i][3].ToString()) == 1)
+                        {
+                            Stu = "Submitted";
+                        }
+                        else if (int.Parse(data.Rows[i][3].ToString()) == 2)
+                        {
+                            Stu = "Ready To Send";
+                        }
+                        else if (int.Parse(data.Rows[i][3].ToString()) == 3)
+                        {
+                            Stu = "Is Sending";
+                        }
+                        else if (int.Parse(data.Rows[i][3].ToString()) == 4)
+                        {
+                            Stu = "Sent";
+                        }
+                        Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
                     }
                 }
                 if (found == 0)

@@ -29,11 +29,6 @@ namespace PostProject
             ButtonShow.Content = new PackageInfoEmpWin(EmployeeID);
         }
 
-        private void SendEmail_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonShow.Content = new SendEmailWin(EmployeeID);
-        }
-
         private void ShowComments_Click(object sender, RoutedEventArgs e)
         {
             ButtonShow.Content = new ShowCommentWin(EmployeeID);

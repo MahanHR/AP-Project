@@ -27,9 +27,7 @@
             <Button Name="PackageInfo" Click="PackageInfo_Click" Margin="10,20" Background="#00609c" Foreground="WhiteSmoke" Width="170">
                 <Bold>Package Info</Bold>
             </Button>
-            <Button Name="SendEmail" Click="SendEmail_Click" Margin="10,20" Background="#004f92" Foreground="WhiteSmoke" Width="170">
-                <Bold>Send Receiving Email</Bold>
-            </Button>
+            
             <Button Name="ShowComments" Click="ShowComments_Click" Margin="10,20" Background="#004f92" Foreground="WhiteSmoke" Width="170">
                 <Bold>ShowComments</Bold>
             </Button>
