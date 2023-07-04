@@ -26,8 +26,6 @@
   <ItemGroup>
     <Resource Include="Sources\back.png" />
     <Resource Include="Sources\Home.png" />
-    <Resource Include="Resources\Background.jpg" />
-    <Resource Include="Resources\Home.png" />
   </ItemGroup>
 
 </Project>
