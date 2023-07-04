@@ -1,8 +1,7 @@
-﻿using System.Windows;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
-using System.Windows.Controls;
+using System.Windows;
 
 namespace PostProject
 {

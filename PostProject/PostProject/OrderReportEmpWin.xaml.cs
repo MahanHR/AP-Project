@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
-using System.Data;
 
 namespace PostProject
 {
@@ -42,7 +31,7 @@ namespace PostProject
                 int isOneTrue = 0;
                 if (ssn)
                 {
-                    if(isOneTrue == 0)
+                    if (isOneTrue == 0)
                     {
                         command += " WHERE SSN = '" + SBox.Text + "'";
                     }
@@ -155,7 +144,7 @@ namespace PostProject
                 DataTable data = new();
                 adapter.Fill(data);
                 int found = 0;
-                for(int i = 0; i < data.Rows.Count; i++)
+                for (int i = 0; i < data.Rows.Count; i++)
                 {
                     found++;
                     string Ty = "", PoTy = "";
