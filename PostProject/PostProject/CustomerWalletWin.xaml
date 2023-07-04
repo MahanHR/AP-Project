@@ -7,28 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="900">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="250" Name="stack1">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock x:Name="Balance" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="0,10" Width="164"></TextBlock>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="Balance" FontSize="15" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="WhiteSmoke" Margin="10" Height="30"></TextBlock>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Card Num</Bold></TextBlock>
+                    <TextBox x:Name="CardNum" Margin="0,10" Width="180" Text="" TextChanged="TextBox_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>CVV2</Bold></TextBlock>
+                    <TextBox x:Name="CVV2" Margin="0,10" Width="180" TextChanged="TextBox_TextChanged_1"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="60"><Bold>Exp Year</Bold></TextBlock>
+                    <TextBox x:Name="expYear" Foreground="Gray" Margin="0,10" Width="100"></TextBox>
+                    <TextBlock Foreground="WhiteSmoke" Margin="20,10" Width="50"><Bold>Exp Month</Bold></TextBlock>
+                    <TextBox x:Name="expMonth" Foreground="Gray" Margin="0,10" Width="50"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Amount</Bold></TextBlock>
+                    <TextBox x:Name="Amount" Margin="0,10" Width="180"></TextBox>
+                </StackPanel>
+                <Button Name="Charge" Click="Charge_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="300">
+                    <Bold>Charge</Bold>
+                </Button>
+                <Button Name="ShowBalance" Click="ShowBalance_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="300">
+                    <Bold>Show Balance</Bold>
+                </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Card Num</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_TextChanged"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>CVV2</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_TextChanged_1"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Exp Date</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_TextChanged_2"></TextBox>
-            </StackPanel>
-            <Button Name="Charge" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="240">
-                <Bold>Charge</Bold>
-            </Button>
-            <Button Name="ShowBalance" Click="ShowBalance_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="240">
-                <Bold>Show Balance</Bold>
-            </Button>
+            <TextBlock x:Name="Error" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="10" Height="30"></TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

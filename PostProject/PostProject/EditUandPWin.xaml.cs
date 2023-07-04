@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
 namespace PostProject
 
 {
@@ -32,7 +21,7 @@ namespace PostProject
 
         private void Change_Click(object sender, RoutedEventArgs e)
         {
-            string userName = UBox.Text , passW = PassBox.Password ;
+            string userName = UBox.Text, passW = PassBox.Password;
             try
             {
                 SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
@@ -49,7 +38,7 @@ namespace PostProject
                     }
                 }
                 Regex usernameRegex = new(@"^\S{3,32}");
-                Regex regex = new (@"^\d{8}$");
+                Regex regex = new(@"^\d{8}$");
                 if (!(usernameRegex.Match(userName).Success))
                 {
                     conn.Close();
@@ -60,7 +49,6 @@ namespace PostProject
                     conn.Close();
                     throw new Exception("Invalid Password");
                 }
-                //Buuuuuuuuuuuuuuuuuuuuuuuuuug!!!!!!!!!!!!!!!!!!!!!!!!1
                 string command2 = "select * from Customer where CustomerID = '" + CustomerIDin + "'";
                 SqlDataAdapter adapter2 = new(command2, conn);
                 DataTable data2 = new();
