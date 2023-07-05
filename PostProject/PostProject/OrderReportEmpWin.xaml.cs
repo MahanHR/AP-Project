@@ -13,7 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
-using System.Data;
+using System.Data; 
+using System.IO;
+ 
 
 namespace PostProject
 {
@@ -155,7 +157,11 @@ namespace PostProject
                 DataTable data = new();
                 adapter.Fill(data);
                 int found = 0;
-                for(int i = 0; i < data.Rows.Count; i++)
+
+                String file = @"CSV\Orders.csv";
+                String separator = ",";
+                StringBuilder output = new StringBuilder();
+                for (int i = 0; i < data.Rows.Count; i++)
                 {
                     found++;
                     string Ty = "", PoTy = "";
@@ -179,13 +185,18 @@ namespace PostProject
                     {
                         PoTy = "Speed";
                     }
+                    string y = string.Format("{0:HH:mm:ss tt}", DateTime.Now);
                     Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "Price : " + data.Rows[i][9].ToString() + "\n\n";
+                    String[] newLine = { data.Rows[i][0].ToString(), data.Rows[i][1].ToString(), data.Rows[i][2].ToString(), Ty, PoTy, data.Rows[i][6].ToString(), data.Rows[i][10].ToString(), data.Rows[i][7].ToString(), data.Rows[i][9].ToString(), y};
+                    output.AppendLine(string.Join(separator, newLine));
                 }
                 if (found == 0)
                 {
                     throw new Exception("Nothing is ordered by this properties");
                 }
                 conn.Close();
+                File.AppendAllText(file, output.ToString());
+
                 throw new Exception(Sending);
             }
             catch (Exception ex)
