@@ -9,11 +9,52 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="Error" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="0,10" Width="auto"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Origin</Bold></TextBlock>
+                <TextBox x:Name="Origin" Margin="0,5" IsEnabled="False" Width="120"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Destination</Bold></TextBlock>
+                <TextBox x:Name="Destination" IsEnabled="False" Margin="0,5" Width="120"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Price</Bold></TextBlock>
+                <TextBox x:Name="pBox" IsEnabled="False" Margin="0,5" Width="120"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Phone Number</Bold></TextBlock>
+                <TextBox x:Name="Phone" IsEnabled="False" Margin="0,5" Width="120"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Weight</Bold></TextBlock>
+                <TextBox IsEnabled="False" x:Name="wBox" Margin="0,5" Width="120"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsEnabled="False" x:Name="Object" Content="Object" Checked="Object_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="60"/>
+                <CheckBox IsEnabled="False" x:Name="Document" Content="Document" Checked="Document_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="90"/>
+                <CheckBox IsEnabled="False" x:Name="Fragile" Content="Fragile" Checked="Fragile_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="60"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsEnabled="False" x:Name="Ordinary" Content="Ordinary Post" Checked="Ordinary_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="120"/>
+                <CheckBox IsEnabled="False" x:Name="Speed" Content="Speed Post" Checked="Speed_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Is Expensive?</Bold></TextBlock>
+                <CheckBox IsEnabled="False" x:Name="isEXy" Content="Yes" Checked="isEXy_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="50"/>
+                <CheckBox IsEnabled="False" x:Name="isEXn" Content="No" Checked="isEXn_Checked" FontWeight="Bold" Foreground="WhiteSmoke" Margin="5" Height="18" Width="50"/>
+            </StackPanel>
+            <Border BorderBrush="Black" BorderThickness="1"></Border>
+            <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>SSN Number</Bold></TextBlock>
-                <TextBox Margin="0,10" Width="120" TextChanged="TextBox_TextChanged"></TextBox>
+                <TextBox Margin="0,10" Width="120" x:Name="SSNsearch"></TextBox>
             </StackPanel>
             <Button Name="Search" Click="Search_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="240">
                 <Bold>Search</Bold>
+            </Button>
+            <Button Name="Submit" Click="Submit_Click" Margin="2" Background="#00609c" Foreground="WhiteSmoke" Width="240">
+                <Bold>Submit</Bold>
             </Button>
         </StackPanel>
     </Grid>

@@ -60,7 +60,6 @@ namespace PostProject
                     conn.Close();
                     throw new Exception("Invalid Password");
                 }
-                //Buuuuuuuuuuuuuuuuuuuuuuuuuug!!!!!!!!!!!!!!!!!!!!!!!!1
                 string command2 = "select * from Customer where CustomerID = '" + CustomerIDin + "'";
                 SqlDataAdapter adapter2 = new(command2, conn);
                 DataTable data2 = new();

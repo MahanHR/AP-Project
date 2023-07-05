@@ -160,7 +160,7 @@ namespace PostProject
                     {
                         Stu = "Sent";
                     }
-                    Sending += i + 1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
+                    Sending += i + 1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "   Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
                 }
                 Orders.Text = Sending;
                 throw new Exception("Status has been set as 'Submitted'");
@@ -232,7 +232,7 @@ namespace PostProject
                     {
                         Stu = "Sent";
                     }
-                    Sending += i + 1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
+                    Sending += i + 1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "   Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
                 }
                 Orders.Text = Sending;
                 throw new Exception("Status has been set as 'Ready To Send'");
@@ -302,7 +302,7 @@ namespace PostProject
                     {
                         Stu = "Sent";
                     }
-                    Sending += i + 1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
+                    Sending += i + 1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "   Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
                 }
                 Orders.Text = Sending;
                 throw new Exception("Status has been set as 'Is Sending'");
@@ -408,7 +408,7 @@ namespace PostProject
                     {
                         Stu = "Sent";
                     }
-                    Sending += i + 1 + "." + "ID : " + data4.Rows[i][0].ToString() + "   Origin : " + data4.Rows[i][1].ToString() + "   Destination : " + data4.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data4.Rows[i][6].ToString() + "   Is Received? " + data4.Rows[i][10].ToString() + "   Weight : " + data4.Rows[i][7].ToString() + "   Price : " + data4.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
+                    Sending += i + 1 + "." + "ID : " + data4.Rows[i][0].ToString() + "   Origin : " + data4.Rows[i][1].ToString() + "   Destination : " + data4.Rows[i][2].ToString() + "   Type : " + Ty + "   Post Type : " + PoTy + "\nIs Expensive? " + data4.Rows[i][6].ToString() + "   Is Received? " + data4.Rows[i][10].ToString() + "   Weight : " + data4.Rows[i][7].ToString() + "   Price : " + data4.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
                 }
                 Orders.Text = Sending;
                 throw new Exception("The email has been sent");
