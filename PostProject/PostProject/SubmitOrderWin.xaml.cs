@@ -33,7 +33,6 @@ namespace PostProject
             {
                 Origin.IsEnabled = false;
                 Destination.IsEnabled = false;
-                pBox.IsEnabled = false;
                 Phone.IsEnabled = false;
                 wBox.IsEnabled = false;
                 Object.IsEnabled = false;
@@ -55,7 +54,6 @@ namespace PostProject
                 }
                 Origin.IsEnabled = true;
                 Destination.IsEnabled = true;
-                pBox.IsEnabled = true;
                 Phone.IsEnabled = true;
                 wBox.IsEnabled = true;
                 Object.IsEnabled = true;
@@ -76,19 +74,9 @@ namespace PostProject
         {
             try
             {
-                if(!(pBox.Text[0] >= 49 && pBox.Text[0] <= 57))
-                {
-                    throw new Exception("Invalid price");
-                }
-                for(int i = 1; i < pBox.Text.Length; i++)
-                {
-                    if (!(pBox.Text[i] >= 48 && pBox.Text[i] <= 57))
-                    {
-                        throw new Exception("Invalid price");
-                    }
-                }
                 int check = 0;
-                for(int i = 0;i < Phone.Text.Length; i++)
+                double price = 10;
+                for (int i = 0;i < Phone.Text.Length; i++)
                 {
                     if(Phone.Text[i].ToString() != " ")
                     {
@@ -149,10 +137,13 @@ namespace PostProject
                 }
                 else if (Document.IsChecked == true)
                 {
+                    price *= 3;
+                    price /= 2;
                     packtype = 2;
                 }
                 else if (Fragile.IsChecked == true)
                 {
+                    price *= 2;
                     packtype = 3;
                 }
                 if (isEXn.IsChecked == true)
@@ -161,8 +152,17 @@ namespace PostProject
                 }
                 else if (isEXy.IsChecked == true)
                 {
+                    price *= 2;
                     isexc = "Yes";
                 }
+                if(double.Parse(wBox.Text) > 0.5)
+                {
+                    double y = double.Parse(wBox.Text) / 0.5;
+                    int yy = (int)y;
+                    price *= Math.Pow(1.2,yy);
+                }
+                string o = price.ToString("f4");
+                price = double.Parse(o);
                 String query = "INSERT INTO Orders (ID,Origin,Destination,Type,SSN,PostType,IsExpensive,Weight,Phone,Price,isReceived,Status) VALUES (@id, @o, @d, @ty, @S, @Pty, @isex, @wei, @ph, @pri, @isRe, @Sta)";
                 SqlCommand command3 = new SqlCommand(query, conn);
                 command3.Parameters.AddWithValue("@id", idSetter);
@@ -174,7 +174,7 @@ namespace PostProject
                 command3.Parameters.AddWithValue("@isex", isexc);
                 command3.Parameters.AddWithValue("@wei", int.Parse(wBox.Text));
                 command3.Parameters.AddWithValue("@ph", Phone.Text);
-                command3.Parameters.AddWithValue("@pri", int.Parse(pBox.Text));
+                command3.Parameters.AddWithValue("@pri", price);
                 command3.Parameters.AddWithValue("@isRe", "No");
                 command3.Parameters.AddWithValue("@Sta", 1);
                 command3.ExecuteNonQuery();
@@ -189,12 +189,10 @@ namespace PostProject
                 SSNsearch.Text = "";
                 Origin.Text = "";
                 Destination.Text = "";
-                pBox.Text = "";
                 wBox.Text = "";
                 Phone.Text = "";
                 Origin.IsEnabled = false;
                 Destination.IsEnabled = false;
-                pBox.IsEnabled = false;
                 Phone.IsEnabled = false;
                 wBox.IsEnabled = false;
                 Object.IsEnabled = false;
@@ -204,7 +202,7 @@ namespace PostProject
                 Speed.IsEnabled = false;
                 isEXy.IsEnabled = false;
                 isEXn.IsEnabled = false;
-                throw new Exception("The order is submitted successfully");
+                throw new Exception("The order is submitted successfully by price of " + price);
             }
             catch (Exception ex)
             {

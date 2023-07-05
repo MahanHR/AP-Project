@@ -20,10 +20,6 @@
                 <TextBox x:Name="Destination" IsEnabled="False" Margin="0,5" Width="120"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Price</Bold></TextBlock>
-                <TextBox x:Name="pBox" IsEnabled="False" Margin="0,5" Width="120"></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" Margin="0,5" Width="120"><Bold>Phone Number</Bold></TextBlock>
                 <TextBox x:Name="Phone" IsEnabled="False" Margin="0,5" Width="120"></TextBox>
             </StackPanel>
