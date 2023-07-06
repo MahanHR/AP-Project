@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
-using System.Data;
 
 namespace PostProject
 {
@@ -38,7 +28,11 @@ namespace PostProject
             {
                 Comment.IsEnabled = false;
                 Comment.Text = "Leave your comment here";
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 string command = "select * from Customer where CustomerID = '" + CustomerID + "'";
                 SqlDataAdapter adapte = new(command, conn);
@@ -55,7 +49,7 @@ namespace PostProject
                     if (SSN == data.Rows[i][4].ToString() && ID == data.Rows[i][0].ToString())
                     {
                         found++;
-                        string Ty = "", PoTy = "",Stu = "";
+                        string Ty = "", PoTy = "", Stu = "";
                         if (int.Parse(data.Rows[i][3].ToString()) == 1)
                         {
                             Ty = "Object";
@@ -119,7 +113,7 @@ namespace PostProject
                     SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
                     conn.Open();
                     string com = "Select * from Orders where ID = '" + IDSearch.Text + "'";
-                    SqlDataAdapter sql = new(com,conn);
+                    SqlDataAdapter sql = new(com, conn);
                     DataTable data20 = new();
                     sql.Fill(data20);
                     if (data20.Rows[0][10].ToString().ToLower() == "no")

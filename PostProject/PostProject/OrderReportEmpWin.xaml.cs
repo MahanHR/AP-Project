@@ -1,19 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
-using System.Data; 
-using System.IO;
- 
 
 namespace PostProject
 {
@@ -149,7 +140,11 @@ namespace PostProject
                         isOneTrue++;
                     }
                 }
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 SqlDataAdapter adapter = new(command, conn);
                 DataTable data = new();
@@ -185,7 +180,7 @@ namespace PostProject
                     }
                     string y = string.Format("{0:HH:mm:ss tt}", DateTime.Now);
                     Sending += found + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "Price : " + data.Rows[i][9].ToString() + "\n\n";
-                    String[] newLine = { data.Rows[i][0].ToString(), data.Rows[i][1].ToString(), data.Rows[i][2].ToString(), Ty, PoTy, data.Rows[i][6].ToString(), data.Rows[i][10].ToString(), data.Rows[i][7].ToString(), data.Rows[i][9].ToString(), y};
+                    String[] newLine = { data.Rows[i][0].ToString(), data.Rows[i][1].ToString(), data.Rows[i][2].ToString(), Ty, PoTy, data.Rows[i][6].ToString(), data.Rows[i][10].ToString(), data.Rows[i][7].ToString(), data.Rows[i][9].ToString(), y };
                     output.AppendLine(string.Join(separator, newLine));
                 }
                 if (found == 0)
