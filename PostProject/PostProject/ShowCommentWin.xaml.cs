@@ -32,7 +32,7 @@ namespace PostProject
                 string sending = "";
                 for (int i = 0; i < data2.Rows.Count; i++)
                 {
-                    sending += i+1 + "." + "Customer ID : " + data2.Rows[i][1].ToString() + "Comment : \n" + data2.Rows[i][2].ToString() + "\n\n";
+                    sending += i+1 + "." + "Customer ID : " + data2.Rows[i][1].ToString() + "   Comment : \n" + data2.Rows[i][2].ToString() + "\n\n";
                 }
                 throw new Exception(sending);
 
