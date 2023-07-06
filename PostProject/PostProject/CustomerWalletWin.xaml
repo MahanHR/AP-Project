@@ -35,7 +35,16 @@
                     <Bold>Show Balance</Bold>
                 </Button>
             </StackPanel>
-            <TextBlock x:Name="Error" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="10" Height="30"></TextBlock>
+            <TextBlock x:Name="Error" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="10" Height="20"></TextBlock>
+            <TextBlock x:Name="AskPDF" Visibility="Hidden" FontWeight="Bold" Text="Do you want to get the order receipt?" TextAlignment="Center" Foreground="White" Margin="10" Height="20"></TextBlock>
+            <StackPanel x:Name="pdfYesNo" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+                <Button Name="PDFyes" Click="PDFyes_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="40">
+                    <Bold>Yes</Bold>
+                </Button>
+                <Button Name="PDFno" Click="PDFno_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="40">
+                    <Bold>No</Bold>
+                </Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

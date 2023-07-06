@@ -162,7 +162,11 @@ namespace PostProject
                 mailMessage.From = new MailAddress(fromMail);
                 mailMessage.Subject = "Your username and password";
                 mailMessage.To.Add(new MailAddress(email));
-                mailMessage.Body = "<html><body>Here is your username and passwor for MMPostProjecct\nUsername: " + username + "\nPassword: " + password + "</body></html>";
+                mailMessage.Body = @"<html><body>
+                    <p>Here is your username and passwor for MMPostProjecct</p>
+                    <p>Username: " + username + @"</p>
+                    <p>Password: " + password + @"</p>
+                    </body></html>";
                 mailMessage.IsBodyHtml = true;
                 var smtpClient = new SmtpClient("smtp.gmail.com")
                 {

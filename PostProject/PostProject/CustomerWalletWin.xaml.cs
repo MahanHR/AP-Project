@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using IronPdf;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
 using System.IO;
@@ -11,6 +12,9 @@ namespace PostProject
     public partial class CustomerWalletWin : UserControl
     {
         public string CustomerID = "";
+        DateTime time;
+        string charged;
+        string current;
         public CustomerWalletWin(string ID)
         {
             CustomerID = ID;
@@ -141,12 +145,35 @@ namespace PostProject
                 command2.Parameters.AddWithValue("@id", int.Parse(CustomerID));
                 command2.ExecuteNonQuery();
                 conn.Close();
+                AskPDF.Visibility = Visibility.Visible;
+                pdfYesNo.Visibility = Visibility.Visible;
+                time = DateTime.Now;
+                charged = chargeAmount.ToString();
+                current = (chargeAmount + currentCharge).ToString();
                 throw new Exception("Your account has been charged");
             }
             catch (Exception ex)
             {
                 Error.Text = ex.Message;
             }
+        }
+
+        private void PDFyes_Click(object sender, RoutedEventArgs e)
+        {
+            var html = @"<h1>Charge Receipt</p>
+                        <p>Time: " + time + @"</p>
+                        <p>Charge Amount" + charged + @"</p>
+                        <p>Current Balance: " + current + @"</p>";
+            var Renderer = new ChromePdfRenderer();
+            Renderer.RenderHtmlAsPdf(html).SaveAs("Charge_Receipt.pdf");
+            AskPDF.Text = @"Receipt saved in location project at \bin\Debug\net6.0-windows\Charge_Receipt.pdf";
+            pdfYesNo.Visibility = Visibility.Hidden;
+        }
+
+        private void PDFno_Click(object sender, RoutedEventArgs e)
+        {
+            AskPDF.Visibility = Visibility.Hidden;
+            pdfYesNo.Visibility = Visibility.Hidden;
         }
     }
 }
