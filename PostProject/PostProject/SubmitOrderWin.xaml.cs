@@ -108,7 +108,11 @@ namespace PostProject
                 {
                     throw new Exception("You must specify the package value");
                 }
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 string command = "select * from Orders";
                 SqlDataAdapter adapter = new(command, conn);

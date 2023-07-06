@@ -108,7 +108,11 @@ namespace PostProject
         {
             try
             {
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 String query = "UPDATE Orders SET isReceived = @c, Status = @s Where ID = @id";
                 SqlCommand command3 = new SqlCommand(query, conn);
@@ -180,7 +184,11 @@ namespace PostProject
         {
             try
             {
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 String query = "UPDATE Orders SET isReceived = @c, Status = @s Where ID = @id";
                 SqlCommand command3 = new SqlCommand(query, conn);
@@ -250,7 +258,11 @@ namespace PostProject
         {
             try
             {
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 String query = "UPDATE Orders SET isReceived = @c, Status = @s Where ID = @id";
                 SqlCommand command3 = new SqlCommand(query, conn);
@@ -320,7 +332,11 @@ namespace PostProject
         {
             try
             {
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 string command2 = "select * from Orders where ID = '" + IDsearch.Text + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(command2, conn);
