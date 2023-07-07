@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
-using System.Data;
-using System.Text.RegularExpressions;
-using System.IO;
 namespace PostProject
 
 {
@@ -33,7 +22,7 @@ namespace PostProject
 
         private void Change_Click(object sender, RoutedEventArgs e)
         {
-            string userName = UBox.Text , passW = PassBox.Password ;
+            string userName = UBox.Text, passW = PassBox.Password;
             try
             {
                 string currentpath = Directory.GetCurrentDirectory();
@@ -54,7 +43,7 @@ namespace PostProject
                     }
                 }
                 Regex usernameRegex = new(@"^\S{3,32}");
-                Regex regex = new (@"^\d{8}$");
+                Regex regex = new(@"^\d{8}$");
                 if (!(usernameRegex.Match(userName).Success))
                 {
                     conn.Close();

@@ -20,14 +20,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Sources\back.png" />
     <Resource Include="Sources\Home.png" />
-    <Resource Include="Resources\Background.jpg" />
-    <Resource Include="Resources\Home.png" />
   </ItemGroup>
 
 </Project>

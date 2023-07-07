@@ -1,12 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.IO;
 
 namespace PostProject
 {
@@ -109,22 +107,27 @@ namespace PostProject
                 adapter.Fill(data);
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
+                    if (data.Rows[i][0].ToString() == PersonnelID.Text)
+                    {
+                        conn.Close();
+                        throw new Exception("This personnel ID is already used");
+                    }
                     if ((string)data.Rows[i][4] == UName.Text)
                     {
                         conn.Close();
-                        throw new Exception("The username is already used");
+                        throw new Exception("This username is already used");
                     }
                     if ((string)data.Rows[i][3] == Email.Text)
                     {
                         conn.Close();
-                        throw new Exception("The email is already used");
+                        throw new Exception("This email is already used");
                     }
                 }
                 if (Pass.Password != PassCon.Password)
                 {
                     throw new Exception("Repeated password does not match");
                 }
-                command = "insert into Employee values('" + int.Parse(PersonnelID.Text) + "','" + Name.Text + "','" + LName.Text + "','" + Email.Text + "','" + UName.Text + "','" + Pass.Password.ToString() + "','" + 0 + "')";
+                command = "insert into Employee values('" + int.Parse(PersonnelID.Text) + "','" + Name.Text + "','" + LName.Text + "','" + Email.Text + "','" + UName.Text + "','" + Pass.Password.ToString() + "')";
                 SqlCommand cmd = new(command, conn);
                 cmd.BeginExecuteNonQuery();
                 conn.Close();

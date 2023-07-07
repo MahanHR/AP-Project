@@ -1,11 +1,11 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
-using Microsoft.Data.SqlClient;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
-using System.IO;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace PostProject
 {
@@ -39,7 +39,7 @@ namespace PostProject
                 SqlDataAdapter adapter = new(command2, conn);
                 DataTable data = new();
                 adapter.Fill(data);
-                if(data.Rows.Count == 0)
+                if (data.Rows.Count == 0)
                 {
                     throw new Exception("You have not ordered this package");
                 }
@@ -72,7 +72,7 @@ namespace PostProject
                     IsSending.IsEnabled = true;
                     if (int.Parse(data.Rows[i][11].ToString()) == 1)
                     {
-                        Submitted.IsChecked = true; 
+                        Submitted.IsChecked = true;
                         Stu = "Submitted";
                     }
                     else if (int.Parse(data.Rows[i][11].ToString()) == 2)
@@ -94,7 +94,7 @@ namespace PostProject
                         IsSending.IsEnabled = false;
                         Stu = "Sent";
                     }
-                    Sending += i+1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
+                    Sending += i + 1 + "." + "ID : " + data.Rows[i][0].ToString() + "   Origin : " + data.Rows[i][1].ToString() + "   Destination : " + data.Rows[i][2].ToString() + "   Type : " + Ty + "Post Type : " + PoTy + "\nIs Expensive? " + data.Rows[i][6].ToString() + "   Is Received? " + data.Rows[i][10].ToString() + "   Weight : " + data.Rows[i][7].ToString() + "   Price : " + data.Rows[i][9].ToString() + "   Status : " + Stu + "\n\n";
                 }
                 conn.Close();
                 throw new Exception(Sending);
@@ -342,7 +342,7 @@ namespace PostProject
                 SqlDataAdapter adapter = new SqlDataAdapter(command2, conn);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
-                if(data.Rows[0][11].ToString() == "4")
+                if (data.Rows[0][11].ToString() == "4")
                 {
                     throw new Exception("Status has been set as 'Sent'");
                 }

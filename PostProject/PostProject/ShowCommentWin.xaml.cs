@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Data;
-using Microsoft.Data.SqlClient;
-using System.IO;
+
 namespace PostProject
 {
     public partial class ShowCommentWin : UserControl
@@ -29,14 +30,14 @@ namespace PostProject
                 SqlDataAdapter adapter = new(command, conn);
                 DataTable data2 = new();
                 adapter.Fill(data2);
-                if(data2.Rows.Count == 0)
+                if (data2.Rows.Count == 0)
                 {
                     throw new Exception("No comment has been submitted for this ID");
                 }
                 string sending = "";
                 for (int i = 0; i < data2.Rows.Count; i++)
                 {
-                    sending += i+1 + "." + "Customer ID : " + data2.Rows[i][1].ToString() + "   Comment : \n" + data2.Rows[i][2].ToString() + "\n\n";
+                    sending += i + 1 + "." + "Customer ID : " + data2.Rows[i][1].ToString() + "   Comment : \n" + data2.Rows[i][2].ToString() + "\n\n";
                 }
                 throw new Exception(sending);
 

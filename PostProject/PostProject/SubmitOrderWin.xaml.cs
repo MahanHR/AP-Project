@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Data;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
-using System.Data;
-using System.Text.RegularExpressions;
-using System.IO;
 
 namespace PostProject
 {
@@ -81,9 +70,9 @@ namespace PostProject
             {
                 int check = 0;
                 double price = 10;
-                for (int i = 0;i < Phone.Text.Length; i++)
+                for (int i = 0; i < Phone.Text.Length; i++)
                 {
-                    if(Phone.Text[i].ToString() != " ")
+                    if (Phone.Text[i].ToString() != " ")
                     {
                         check++;
                     }
@@ -168,11 +157,11 @@ namespace PostProject
                     price *= 2;
                     isexc = "Yes";
                 }
-                if(double.Parse(wBox.Text) > 0.5)
+                if (double.Parse(wBox.Text) > 0.5)
                 {
                     double y = double.Parse(wBox.Text) / 0.5;
                     int yy = (int)y;
-                    price *= Math.Pow(1.2,yy);
+                    price *= Math.Pow(1.2, yy);
                 }
                 string o = price.ToString("f4");
                 price = double.Parse(o);
