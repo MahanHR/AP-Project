@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="PostProject.CustomerWalletWin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostProject"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="Balance" FontSize="15" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="WhiteSmoke" Margin="10" Height="30"></TextBlock>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Card Num</Bold></TextBlock>
+                    <TextBox x:Name="CardNum" Margin="0,10" Width="180" Text="" TextChanged="TextBox_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>CVV2</Bold></TextBlock>
+                    <TextBox x:Name="CVV2" Margin="0,10" Width="180" TextChanged="TextBox_TextChanged_1"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="60"><Bold>Exp Year</Bold></TextBlock>
+                    <TextBox x:Name="expYear" Foreground="Gray" Margin="0,10" Width="100"></TextBox>
+                    <TextBlock Foreground="WhiteSmoke" Margin="20,10" Width="50"><Bold>Exp Month</Bold></TextBlock>
+                    <TextBox x:Name="expMonth" Foreground="Gray" Margin="0,10" Width="50"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Amount</Bold></TextBlock>
+                    <TextBox x:Name="Amount" Margin="0,10" Width="180"></TextBox>
+                </StackPanel>
+                <Button Name="Charge" Click="Charge_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="300">
+                    <Bold>Charge</Bold>
+                </Button>
+                <Button Name="ShowBalance" Click="ShowBalance_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="300">
+                    <Bold>Show Balance</Bold>
+                </Button>
+            </StackPanel>
+            <TextBlock x:Name="Error" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="10" Height="20"></TextBlock>
+            <TextBlock x:Name="AskPDF" Visibility="Hidden" FontWeight="Bold" Text="Do you want to get the order receipt?" TextAlignment="Center" Foreground="White" Margin="10" Height="20"></TextBlock>
+            <StackPanel x:Name="pdfYesNo" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+                <Button Name="PDFyes" Click="PDFyes_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="40">
+                    <Bold>Yes</Bold>
+                </Button>
+                <Button Name="PDFno" Click="PDFno_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="40">
+                    <Bold>No</Bold>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

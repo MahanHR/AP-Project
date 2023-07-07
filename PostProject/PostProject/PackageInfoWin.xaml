@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="PostProject.PackageInfoWin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostProject"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="stack1" Width="500" Height="500">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="Error" FontWeight="Bold" Text="" TextAlignment="Center" Foreground="OrangeRed" Margin="0,10" Width="auto"></TextBlock>
+            </StackPanel>
+            <TextBox x:Name="Orders" IsReadOnly="True" BorderBrush="#1338BE" Width="auto" Foreground="WhiteSmoke" Background="Transparent" Height="250" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Center" Text="" FontWeight="Bold" VerticalScrollBarVisibility="Visible"></TextBox>
+            <TextBox IsEnabled="False" x:Name="Comment" BorderBrush="#1338BE" Width="auto" Margin="0,10" Foreground="White" Background="#0492C2" Opacity="0.5" Height="80" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Center" Text="Leave your comment here" FontWeight="Bold" VerticalScrollBarVisibility="Visible"></TextBox>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Foreground="WhiteSmoke" Margin="0,10" Width="120"><Bold>Package ID</Bold></TextBlock>
+                <TextBox x:Name="IDSearch" Margin="0,10" Width="120"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Name="ShowInfo" Click="ShowInfo_Click" Margin="10" Background="#00609c" Foreground="WhiteSmoke" Width="240">
+                    <Bold>Show Info</Bold>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Name="SendComment" Click="SendComment_Click" Background="#00609c" Foreground="WhiteSmoke" Width="240">
+                    <Bold>Send Comment</Bold>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+            
+    </Grid>
+</UserControl>
