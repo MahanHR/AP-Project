@@ -151,7 +151,7 @@ namespace PostProject
                 adapter.Fill(data);
                 int found = 0;
 
-                String file = @"CSV\Orders.csv";
+                String file = path + @"\CSV\Orders.csv";
                 String separator = ",";
                 StringBuilder output = new StringBuilder();
                 for (int i = 0; i < data.Rows.Count; i++)

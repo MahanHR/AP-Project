@@ -1,11 +1,13 @@
-﻿using IronPdf;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
-using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using IronPdf;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.IO;
 
 namespace PostProject
 {
@@ -18,6 +20,9 @@ namespace PostProject
         public CustomerWalletWin(string ID)
         {
             CustomerID = ID;
+            DateTime time;
+            string charged;
+            string current;
             InitializeComponent();
         }
 
@@ -118,6 +123,7 @@ namespace PostProject
                 }
                 int currentCharge = 0;
                 int chargeAmount = int.Parse(Amount.Text);
+
                 string currentpath = Directory.GetCurrentDirectory();
                 string parent1 = Directory.GetParent(currentpath).ToString();
                 string parent2 = Directory.GetParent(parent1).ToString();
@@ -157,7 +163,6 @@ namespace PostProject
                 Error.Text = ex.Message;
             }
         }
-
         private void PDFyes_Click(object sender, RoutedEventArgs e)
         {
             var html = @"<h1>Charge Receipt</p>
