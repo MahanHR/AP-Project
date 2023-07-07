@@ -3,13 +3,10 @@ using iTextSharp.text.pdf;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using IronPdf;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using System.IO;
 
 namespace PostProject
 {

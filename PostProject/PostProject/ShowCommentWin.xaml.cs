@@ -4,9 +4,6 @@ using System.Data;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Data;
-using Microsoft.Data.SqlClient;
-using System.IO;
 
 namespace PostProject
 {
