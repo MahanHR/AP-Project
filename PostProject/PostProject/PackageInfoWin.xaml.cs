@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace PostProject
 {
@@ -38,7 +39,11 @@ namespace PostProject
             {
                 Comment.IsEnabled = false;
                 Comment.Text = "Leave your comment here";
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 string command = "select * from Customer where CustomerID = '" + CustomerID + "'";
                 SqlDataAdapter adapte = new(command, conn);
@@ -116,7 +121,11 @@ namespace PostProject
             {
                 if (Comment.IsEnabled)
                 {
-                    SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                    string currentpath = Directory.GetCurrentDirectory();
+                    string parent1 = Directory.GetParent(currentpath).ToString();
+                    string parent2 = Directory.GetParent(parent1).ToString();
+                    string path = Directory.GetParent(parent2).ToString();
+                    SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                     conn.Open();
                     string com = "Select * from Orders where ID = '" + IDSearch.Text + "'";
                     SqlDataAdapter sql = new(com,conn);

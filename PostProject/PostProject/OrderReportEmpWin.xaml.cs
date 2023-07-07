@@ -151,14 +151,18 @@ namespace PostProject
                         isOneTrue++;
                     }
                 }
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 SqlDataAdapter adapter = new(command, conn);
                 DataTable data = new();
                 adapter.Fill(data);
                 int found = 0;
 
-                String file = @"CSV\Orders.csv";
+                String file = path + @"\CSV\Orders.csv";
                 String separator = ",";
                 StringBuilder output = new StringBuilder();
                 for (int i = 0; i < data.Rows.Count; i++)

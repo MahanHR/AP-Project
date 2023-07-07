@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using Microsoft.Data.SqlClient;
-
+using System.IO;
 namespace PostProject
 {
     public partial class ShowCommentWin : UserControl
@@ -19,7 +19,11 @@ namespace PostProject
             Orders.Text = "";
             try
             {
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 string command = "select * from Comments Where OrderID = '" + IDSearch.Text + "'";
                 SqlDataAdapter adapter = new(command, conn);

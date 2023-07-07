@@ -1,13 +1,13 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
-using System.ComponentModel.Design;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
+using IronPdf;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.IO;
 
 namespace PostProject
 {
@@ -17,6 +17,9 @@ namespace PostProject
         public CustomerWalletWin(string ID)
         {
             CustomerID = ID;
+            DateTime time;
+            string charged;
+            string current;
             InitializeComponent();
         }
 
@@ -37,7 +40,11 @@ namespace PostProject
 
         private void ShowBalance_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+            string currentpath = Directory.GetCurrentDirectory();
+            string parent1 = Directory.GetParent(currentpath).ToString();
+            string parent2 = Directory.GetParent(parent1).ToString();
+            string path = Directory.GetParent(parent2).ToString();
+            SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
             conn.Open();
             string command = "select * from Customer";
             SqlDataAdapter adapter = new(command, conn);
@@ -113,7 +120,12 @@ namespace PostProject
                 }
                 int currentCharge = 0;
                 int chargeAmount = int.Parse(Amount.Text);
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 string command = "select * from Customer";
                 SqlDataAdapter adapter = new SqlDataAdapter(command, conn);
@@ -136,12 +148,34 @@ namespace PostProject
                 command2.Parameters.AddWithValue("@id", int.Parse(CustomerID));
                 command2.ExecuteNonQuery();
                 conn.Close();
+                AskPDF.Visibility = Visibility.Visible;
+                pdfYesNo.Visibility = Visibility.Visible;
+                time = DateTime.Now;
+                charged = chargeAmount.ToString();
+                current = (chargeAmount + currentCharge).ToString();
                 throw new Exception("Your account has been charged");
             }
             catch (Exception ex)
             {
                 Error.Text = ex.Message;
             }
+        }
+        private void PDFyes_Click(object sender, RoutedEventArgs e)
+        {
+            var html = @"<h1>Charge Receipt</p>
+                        <p>Time: " + time + @"</p>
+                        <p>Charge Amount" + charged + @"</p>
+                        <p>Current Balance: " + current + @"</p>";
+            var Renderer = new ChromePdfRenderer();
+            Renderer.RenderHtmlAsPdf(html).SaveAs("Charge_Receipt.pdf");
+            AskPDF.Text = @"Receipt saved in location project at \bin\Debug\net6.0-windows\Charge_Receipt.pdf";
+            pdfYesNo.Visibility = Visibility.Hidden;
+        }
+
+        private void PDFno_Click(object sender, RoutedEventArgs e)
+        {
+            AskPDF.Visibility = Visibility.Hidden;
+            pdfYesNo.Visibility = Visibility.Hidden;
         }
     }
 }

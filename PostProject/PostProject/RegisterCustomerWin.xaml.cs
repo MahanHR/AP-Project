@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.IO;
 
 namespace PostProject
 {
@@ -89,7 +90,11 @@ namespace PostProject
                 string phoneNumber = PhoneNo.Text.ToString();
                 //
                 var exclude = new HashSet<int>();
-                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\SQL\save.mdf;Initial Catalog=save;Integrated Security=True");
+                string currentpath = Directory.GetCurrentDirectory();
+                string parent1 = Directory.GetParent(currentpath).ToString();
+                string parent2 = Directory.GetParent(parent1).ToString();
+                string path = Directory.GetParent(parent2).ToString();
+                SqlConnection conn = new(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\SQL\save.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 string command = "select * from Customer";
                 SqlDataAdapter adapter = new(command, conn);
@@ -157,7 +162,11 @@ namespace PostProject
                 mailMessage.From = new MailAddress(fromMail);
                 mailMessage.Subject = "Your username and password";
                 mailMessage.To.Add(new MailAddress(email));
-                mailMessage.Body = "<html><body>Here is your username and passwor for MMPostProjecct\nUsername: " + username + "\nPassword: " + password + "</body></html>";
+                mailMessage.Body = @"<html><body>
+                    <p>Here is your username and passwor for MMPostProjecct</p>
+                    <p>Username: " + username + @"</p>
+                    <p>Password: " + password + @"</p>
+                    </body></html>";
                 mailMessage.IsBodyHtml = true;
                 var smtpClient = new SmtpClient("smtp.gmail.com")
                 {
