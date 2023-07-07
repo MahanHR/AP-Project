@@ -85,6 +85,10 @@ namespace PostProject
                         throw new Exception("Input format of phone number is not correct");
                     }
                 }
+                if(wBox.Text.Length == 0)
+                {
+                    throw new Exception("Invalid weight");
+                }
                 if (!(wBox.Text[0] >= 49 && wBox.Text[0] <= 57))
                 {
                     throw new Exception("Invalid weight");
@@ -161,6 +165,22 @@ namespace PostProject
                 }
                 string o = price.ToString("f4");
                 price = double.Parse(o);
+                string command10 = "select * from Customer where SSN = '" + SSNsearch.Text + "'";
+                SqlDataAdapter adapter10 = new(command10, conn);
+                DataTable data10 = new();
+                adapter10.Fill(data10);
+                if(double.Parse(data10.Rows[0][8].ToString()) - price < 0)
+                {
+                    throw new Exception("This customer's balance is lower than the price");
+                }
+                String query2 = "UPDATE Customer SET Balance = @b Where CustomerID = @id";
+                SqlCommand command5 = new SqlCommand(query2, conn);
+                double h = double.Parse(data10.Rows[0][8].ToString()) - price;
+                string hh = h.ToString("f4");
+                h = double.Parse(hh);
+                command5.Parameters.AddWithValue("@id", int.Parse(data10.Rows[0][0].ToString()));
+                command5.Parameters.AddWithValue("@b", h);
+                command5.ExecuteNonQuery();
                 String query = "INSERT INTO Orders (ID,Origin,Destination,Type,SSN,PostType,IsExpensive,Weight,Phone,Price,isReceived,Status) VALUES (@id, @o, @d, @ty, @S, @Pty, @isex, @wei, @ph, @pri, @isRe, @Sta)";
                 SqlCommand command3 = new SqlCommand(query, conn);
                 command3.Parameters.AddWithValue("@id", idSetter);

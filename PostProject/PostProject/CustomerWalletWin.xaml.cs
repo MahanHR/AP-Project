@@ -19,6 +19,9 @@ namespace PostProject
         public CustomerWalletWin(string ID)
         {
             CustomerID = ID;
+            DateTime time;
+            string charged;
+            string current;
             InitializeComponent();
         }
 
@@ -119,6 +122,7 @@ namespace PostProject
                 }
                 int currentCharge = 0;
                 int chargeAmount = int.Parse(Amount.Text);
+
                 string currentpath = Directory.GetCurrentDirectory();
                 string parent1 = Directory.GetParent(currentpath).ToString();
                 string parent2 = Directory.GetParent(parent1).ToString();
