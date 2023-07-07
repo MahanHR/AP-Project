@@ -1,4 +1,5 @@
-﻿using IronPdf;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
@@ -160,13 +161,13 @@ namespace PostProject
 
         private void PDFyes_Click(object sender, RoutedEventArgs e)
         {
-            var html = @"<h1>Charge Receipt</p>
-                        <p>Time: " + time + @"</p>
-                        <p>Charge Amount" + charged + @"</p>
-                        <p>Current Balance: " + current + @"</p>";
-            var Renderer = new ChromePdfRenderer();
-            Renderer.RenderHtmlAsPdf(html).SaveAs("Charge_Receipt.pdf");
-            AskPDF.Text = @"Receipt saved in location project at \bin\Debug\net6.0-windows\Charge_Receipt.pdf";
+            Document pdfDocument = new Document(iTextSharp.text.PageSize.A5);
+            PdfWriter.GetInstance(pdfDocument, new FileStream(@"../../../Charge_Receipt.pdf", FileMode.OpenOrCreate));
+            pdfDocument.Open();
+            pdfDocument.Add(new Paragraph("Charge Receipt Time: " + time + "\nCharge Amount: " + charged + "\nCurrent Balance: " + current));
+            pdfDocument.Close();
+
+            AskPDF.Text = @"Receipt saved in location project as Charge_Receipt.pdf";
             pdfYesNo.Visibility = Visibility.Hidden;
         }
 
