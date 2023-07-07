@@ -1,0 +1,9 @@
+Name:			^[A-z]{3,32}$
+Email:			^[\w-\.]{3,32}@[A-z]{3,32}.[A-z]{2,3}$
+Phone Number:		^09\d{9}$
+Employee Password:	^(?=\S{8})(?!\S{33})(\S*[a-z]+\S*[A-Z]+\S*|\S*[A-Z]+\S*[a-z]+\S*)$
+Customer Password:	^\d{8}$
+Customer Username:	^user(0|[1-9]\d{0,3})$
+CVV2:			^\d{3,4}$
+SSN:			^00\d{8}$
+Personnel ID:		^\d{2}9\d{2}$
