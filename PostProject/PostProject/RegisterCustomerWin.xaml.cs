@@ -121,6 +121,7 @@ namespace PostProject
                         throw new Exception("This phone number is already used");
                     }
                 }
+                /*
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
                     int usedUserNum = int.Parse(data.Rows[i][6].ToString().Substring(4));
@@ -147,8 +148,28 @@ namespace PostProject
                     generated = "0" + generated;
                 }
                 //
-                string password = generated;
-
+                string password = generated;*/
+                int ok = 0;
+                string username = "";
+                while (ok != 0)
+                {
+                    ok = 0;
+                    username = "user";
+                    Random rnd2 = new Random();
+                    int u = rnd2.Next(0, 10000);
+                    username += u.ToString();
+                    for (int i = 0; i < data.Rows.Count; i++) 
+                    {
+                        if (data.Rows[i][6].ToString() == username)
+                        {
+                            ok++;
+                        }
+                    }
+                }
+                Random rnd = new Random();
+                int p = rnd.Next(10000000, 100000000);
+                string password = p.ToString();
+                message.Foreground = Brushes.OrangeRed;
                 /*command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
                 SqlCommand cmd = new(command, conn);
                 cmd.BeginExecuteNonQuery();
