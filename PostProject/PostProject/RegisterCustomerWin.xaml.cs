@@ -148,6 +148,7 @@ namespace PostProject
                 }
                 //
                 string password = generated;
+                float balance = 0;
 
                 /*command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
                 SqlCommand cmd = new(command, conn);
