@@ -127,9 +127,19 @@ namespace PostProject
                 {
                     throw new Exception("Repeated password does not match");
                 }
-                command = "insert into Employee values('" + int.Parse(PersonnelID.Text) + "','" + Name.Text + "','" + LName.Text + "','" + Email.Text + "','" + UName.Text + "','" + Pass.Password.ToString() + "')";
+                /*command = "insert into Employee values('" + int.Parse(PersonnelID.Text) + "','" + Name.Text + "','" + LName.Text + "','" + Email.Text + "','" + UName.Text + "','" + Pass.Password.ToString() + "')";
                 SqlCommand cmd = new(command, conn);
                 cmd.BeginExecuteNonQuery();
+                conn.Close();*/
+                String query = "INSERT INTO Employee (PersonnelID,FirstName,LastName,Email,UserName,Pass) VALUES (@id, @f, @l, @e, @us, @ps)";
+                SqlCommand command3 = new SqlCommand(query, conn);
+                command3.Parameters.AddWithValue("@id", int.Parse(PersonnelID.Text));
+                command3.Parameters.AddWithValue("@f", Name.Text);
+                command3.Parameters.AddWithValue("@l", LName.Text);
+                command3.Parameters.AddWithValue("@e", Email.Text);
+                command3.Parameters.AddWithValue("@us", UName.Text);
+                command3.Parameters.AddWithValue("@ps", Pass.Password);
+                command3.ExecuteNonQuery();
                 conn.Close();
                 var p = new MainWindow();
                 p.Show();
