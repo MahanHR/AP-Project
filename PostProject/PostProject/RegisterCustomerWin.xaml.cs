@@ -150,23 +150,9 @@ namespace PostProject
                 string password = generated;
                 float balance = 0;
 
-                /*command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
+                command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
                 SqlCommand cmd = new(command, conn);
                 cmd.BeginExecuteNonQuery();
-                conn.Close();*/
-
-                String query = "INSERT INTO Customer (CustomerID,FirstName,LastName,Email,SSN,Phone,UserName,Pass,Balance) VALUES (@id, @f, @l, @e, @s, @ph, @us, @ps, @b)";
-                SqlCommand command3 = new SqlCommand(query, conn);
-                command3.Parameters.AddWithValue("@id", data.Rows.Count + 1);
-                command3.Parameters.AddWithValue("@f", firstName);
-                command3.Parameters.AddWithValue("@l", lastName);
-                command3.Parameters.AddWithValue("@e", email);
-                command3.Parameters.AddWithValue("@s", ssn);
-                command3.Parameters.AddWithValue("@ph", phoneNumber);
-                command3.Parameters.AddWithValue("@us", username);
-                command3.Parameters.AddWithValue("@ps", password);
-                command3.Parameters.AddWithValue("@b", 0);
-                command3.ExecuteNonQuery();
                 conn.Close();
 
                 string fromMail = "mmpostproject@gmail.com";
