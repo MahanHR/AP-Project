@@ -70,19 +70,19 @@ namespace PostProject
                         {
                             PoTy = "Speed";
                         }
-                        if (int.Parse(data.Rows[i][3].ToString()) == 1)
+                        if (int.Parse(data.Rows[i][11].ToString()) == 1)
                         {
                             Stu = "Submitted";
                         }
-                        else if (int.Parse(data.Rows[i][3].ToString()) == 2)
+                        else if (int.Parse(data.Rows[i][11].ToString()) == 2)
                         {
                             Stu = "Ready To Send";
                         }
-                        else if (int.Parse(data.Rows[i][3].ToString()) == 3)
+                        else if (int.Parse(data.Rows[i][11].ToString()) == 3)
                         {
                             Stu = "Is Sending";
                         }
-                        else if (int.Parse(data.Rows[i][3].ToString()) == 4)
+                        else if (int.Parse(data.Rows[i][11].ToString()) == 4)
                         {
                             Stu = "Sent";
                         }
