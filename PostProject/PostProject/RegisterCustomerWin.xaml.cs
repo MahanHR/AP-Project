@@ -123,8 +123,12 @@ namespace PostProject
                 }
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    int usedUserNum = int.Parse(data.Rows[i][6].ToString().Substring(4));
-                    exclude.Add(usedUserNum);
+                    Regex usernameRegex = new(@"^user(0|[1-9]\d{0,3})$");
+                    if (usernameRegex.Match(data.Rows[i][6].ToString()).Success)
+                    {
+                        int usedUserNum = int.Parse(data.Rows[i][6].ToString().Substring(4));
+                        exclude.Add(usedUserNum);
+                    }
                 }
                 var range = Enumerable.Range(1, 9999).Where(i => !exclude.Contains(i));
                 var rand = new Random();
@@ -148,7 +152,7 @@ namespace PostProject
                 }
                 //
                 string password = generated;
-                int balance = 0;
+                float balance = 0;
 
                 command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
                 SqlCommand cmd = new(command, conn);
