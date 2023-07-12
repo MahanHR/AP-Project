@@ -121,11 +121,14 @@ namespace PostProject
                         throw new Exception("This phone number is already used");
                     }
                 }
-                /*
                 for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    int usedUserNum = int.Parse(data.Rows[i][6].ToString().Substring(4));
-                    exclude.Add(usedUserNum);
+                    Regex usernameRegex = new(@"^user(0|[1-9]\d{0,3})$");
+                    if (usernameRegex.Match(data.Rows[i][6].ToString()).Success)
+                    {
+                        int usedUserNum = int.Parse(data.Rows[i][6].ToString().Substring(4));
+                        exclude.Add(usedUserNum);
+                    }
                 }
                 var range = Enumerable.Range(1, 9999).Where(i => !exclude.Contains(i));
                 var rand = new Random();
@@ -148,45 +151,12 @@ namespace PostProject
                     generated = "0" + generated;
                 }
                 //
-                string password = generated;*/
-                int ok = 0;
-                string username = "";
-                while (ok != 0)
-                {
-                    ok = 0;
-                    username = "user";
-                    Random rnd2 = new Random();
-                    int u = rnd2.Next(0, 10000);
-                    username += u.ToString();
-                    for (int i = 0; i < data.Rows.Count; i++) 
-                    {
-                        if (data.Rows[i][6].ToString() == username)
-                        {
-                            ok++;
-                        }
-                    }
-                }
-                Random rnd = new Random();
-                int p = rnd.Next(10000000, 100000000);
-                string password = p.ToString();
-                message.Foreground = Brushes.OrangeRed;
-                /*command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
+                string password = generated;
+                float balance = 0;
+
+                command = "insert into Customer values('" + (data.Rows.Count + 1) + "','" + firstName + "','" + lastName + "','" + email + "','" + ssn + "','" + phoneNumber + "','" + username + "','" + password + "','" + balance + "')";
                 SqlCommand cmd = new(command, conn);
                 cmd.BeginExecuteNonQuery();
-                conn.Close();*/
-
-                String query = "INSERT INTO Customer (CustomerID,FirstName,LastName,Email,SSN,Phone,UserName,Pass,Balance) VALUES (@id, @f, @l, @e, @s, @ph, @us, @ps, @b)";
-                SqlCommand command3 = new SqlCommand(query, conn);
-                command3.Parameters.AddWithValue("@id", data.Rows.Count + 1);
-                command3.Parameters.AddWithValue("@f", firstName);
-                command3.Parameters.AddWithValue("@l", lastName);
-                command3.Parameters.AddWithValue("@e", email);
-                command3.Parameters.AddWithValue("@s", ssn);
-                command3.Parameters.AddWithValue("@ph", phoneNumber);
-                command3.Parameters.AddWithValue("@us", username);
-                command3.Parameters.AddWithValue("@ps", password);
-                command3.Parameters.AddWithValue("@b", 0);
-                command3.ExecuteNonQuery();
                 conn.Close();
 
                 string fromMail = "mmpostproject@gmail.com";
